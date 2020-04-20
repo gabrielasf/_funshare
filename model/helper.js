@@ -1,4 +1,4 @@
-require("dotenv").config();
+/*require("dotenv").config();
 const mysql = require("mysql");
 
 module.exports = async function db(query) {
@@ -61,4 +61,4 @@ module.exports = async function db(query) {
   });
 
   return promise;
-};
+}; */

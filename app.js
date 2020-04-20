@@ -9,6 +9,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/funshare", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connection.once("open", function(){
+  console.log("Connection ok!");
+
+}).on("error", function(error){
+console.log("connection error", error);
+});
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

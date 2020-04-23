@@ -5,6 +5,8 @@ export default class AllUsers extends Component {
     super(props);
     this.state = {
       users: [],
+      cityToFilter: "",
+      gameCategory: ""
     };
   }
 
@@ -21,16 +23,73 @@ export default class AllUsers extends Component {
       });
   };
 
+  handleInputChange = event => {
+    event.preventDefault();
+    const value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  searchByCity = event => {
+    event.preventDefault();
+    fetch(`/users/city/${this.state.cityToFilter}`)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      this.setState({ users: response})
+    });
+  };
+
+  searchByCategory = event => {
+    event.preventDefault();
+    fetch(`/users/category/${this.state.gameCategory}`)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      this.setState({ users: response})
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>ALL USERS</h1>
+
+        <div className="input-group mb-3 input-group-prepend">
+        <label className="input-group-text" for="inputGroupSelect01">City</label>
+        <form onSubmit={this.searchByCity}>
+          <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
+          <input type="submit" value="Search" />
+        </form>
+        </div>
+
+        <div className="input-group mb-3 input-group-prepend">
+          <label className="input-group-text" for="inputGroupSelect01">Game category</label>
+          <select className="custom-select" onChange={this.handleInputChange} name="gameCategory">
+          <option selected>Choose...</option>
+          <option value="rollAndMove">Roll and Move</option>
+          <option value="workerPlacement">Worker Placement</option>
+          <option value="cooperative">Cooperative </option>
+          <option value="deckBuilding">Deck-Building </option>
+          <option value="areaControl">Area Control  </option>
+          <option value="secretIdentity">Secret Identity </option>
+          <option value="legacy">Legacy </option>
+          <option value="party">Party </option>
+          <option value="puzzle">Puzzle </option>
+          <option value="combat">Combat </option>
+          <option value="jigsaw">Jigsaw </option>
+          </select>
+          <button onClick={this.searchByCategory}>Search</button>
+        </div>
+
         <div className="container">
           <div className="row">
-            <div>
               {this.state.users.map((user, index) => {
                 return (
-                  <div key={index} className="col-4">
+                  <div key={index} className="col-3">
                     <div className=" userDisplay shadow rounded border">
                       <div>
                         <span className="label">Name: </span>
@@ -60,7 +119,6 @@ export default class AllUsers extends Component {
                   </div>
                 );
               })}
-            </div>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export default class Register extends Component {
   }
 
   postUsers = () => {
-    fetch("/")
+    fetch("/users/")
       .then((response) => response.json())
       .then((response) => {
         this.setState({ users: response });
@@ -38,7 +38,7 @@ export default class Register extends Component {
       .then((res) => res.json())
       .then((response) => {
         this.setState({
-          user: response,
+          users: response,
         });
       })
       .catch((error) => {

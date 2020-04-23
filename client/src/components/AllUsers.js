@@ -53,18 +53,30 @@ export default class AllUsers extends Component {
     });
   };
 
+  searchByCityAndCategory = event => {
+    event.preventDefault();
+    fetch(`/users/cityAndCategory/${this.state.cityToFilter}/${this.state.gameCategory}`)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      this.setState({ users: response})
+    });
+  };
+
+
   render() {
     return (
       <div>
         <h1>ALL USERS</h1>
 
-        <div className="input-group mb-3 input-group-prepend">
+       {/* <div className="input-group mb-3 input-group-prepend">
         <label className="input-group-text" for="inputGroupSelect01">City</label>
         <form onSubmit={this.searchByCity}>
           <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
           <input type="submit" value="Search" />
         </form>
         </div>
+    */}
 
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" for="inputGroupSelect01">Game category</label>
@@ -82,7 +94,8 @@ export default class AllUsers extends Component {
           <option value="combat">Combat </option>
           <option value="jigsaw">Jigsaw </option>
           </select>
-          <button onClick={this.searchByCategory}>Search</button>
+          <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
+          <button onClick={this.searchByCityAndCategory}>Search</button>
         </div>
 
         <div className="container">

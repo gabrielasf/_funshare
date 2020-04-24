@@ -37,7 +37,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-//get use by category
+//get user by category
 router.get('/category/:myGameCategory', function(req, res, next) {
   User.find({"myGameCategory": req.params.myGameCategory}, function(err, result) {
     //console.log(result);
@@ -50,7 +50,7 @@ router.get('/category/:myGameCategory', function(req, res, next) {
   });
 });
 
-//get use by city
+//get user by city
 router.get('/city/:city', function(req, res, next) {
   User.find({"city": req.params.city}, function(err, result) {
     //console.log(result);
@@ -63,6 +63,42 @@ router.get('/city/:city', function(req, res, next) {
   });
 });
 
+//get user by city and category
+router.get('/cityAndCategory/:city/:myGameCategory', function(req, res, next) {
+  User.find({"city": req.params.city, "myGameCategory": req.params.myGameCategory}, function(err, result) {
+    //console.log(result);
+    console.log("we connected");
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+//get user by multiple filters
+router.post('/filteredSearch', function(req, res){
+  //console.log("body request", req.body);
+let obj = {};
+if (req.body.cityToFilter !== "") {
+   obj["city"] = req.body.cityToFilter;
+}
+if (req.body.gameCategory !== "") {
+  obj["myGameCategory"] = req.body.gameCategory;
+}
+
+console.log("to jest obiekt", obj);
+
+  User.find(obj, function(err, result) {
+    console.log(result);
+    console.log("we connected");
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+})
 
 //add new user
 router.post('/', function(req, res) {

@@ -38,7 +38,7 @@ export default class AllUsers extends Component {
     fetch(`/users/city/${this.state.cityToFilter}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
+      //console.log(response);
       this.setState({ users: response})
     });
   };
@@ -48,7 +48,6 @@ export default class AllUsers extends Component {
     fetch(`/users/category/${this.state.gameCategory}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       this.setState({ users: response})
     });
   };
@@ -58,11 +57,31 @@ export default class AllUsers extends Component {
     fetch(`/users/cityAndCategory/${this.state.cityToFilter}/${this.state.gameCategory}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       this.setState({ users: response})
     });
   };
 
+  searchByMultiple = (event) => {
+    event.preventDefault();
+    fetch("/users/filteredSearch", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        gameCategory: this.state.gameCategory,
+        cityToFilter: this.state.cityToFilter,
+      }),
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      this.setState({users: response})
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
 
   render() {
     return (
@@ -79,7 +98,7 @@ export default class AllUsers extends Component {
     */}
 
         <div className="input-group mb-3 input-group-prepend">
-          <label className="input-group-text" for="inputGroupSelect01">Game category</label>
+          <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
           <select className="custom-select" onChange={this.handleInputChange} name="gameCategory">
           <option selected>Choose...</option>
           <option value="rollAndMove">Roll and Move</option>
@@ -95,7 +114,7 @@ export default class AllUsers extends Component {
           <option value="jigsaw">Jigsaw </option>
           </select>
           <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
-          <button onClick={this.searchByCityAndCategory}>Search</button>
+          <button onClick={this.searchByMultiple}>Search</button>
         </div>
 
         <div className="container">

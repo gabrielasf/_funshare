@@ -48,6 +48,7 @@ export default class Register extends Component {
 
   handleChange = (e) => {
     const name = e.target.name;
+    //const value = e.target.value;
 
     this.setState({
       [name]: e.target.value,
@@ -63,60 +64,72 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="Form Center">
-        <form onSubmit={this.handleSubmit} className="Form Fields">
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-
-          <div className="Form Fields">
-            <label>Name</label>
-            <input
-              type="text"
-              placeholder="Enter your Name"
-              name="name"
-              required
-              value={this.state.name}
-              onChange={this.handleChange}
-            ></input>
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-md-6 m-auto">
+            <div className="card card-body">
+              <div className="Form Center">
+                <form onSubmit={this.handleSubmit} className="Form Fields">
+                  <h1 className="text-center mb-3">
+                    <i className="fas fa-user-plus"></i>Sign Up
+                  </h1>
+                  <p>Please fill in this form to create an account.</p>
+                  <br />
+                  <label>Name</label>
+                  <br />
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Enter your Name"
+                    name="name"
+                    required
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  ></input>
+                  <br />
+                  <label>Email</label>
+                  <br />
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Enter your Email"
+                    name="email"
+                    required
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  ></input>
+                  <br />
+                  <label>Password</label>
+                  <br />
+                  <input
+                    className="form-control"
+                    type="password"
+                    placeholder="Enter your Password"
+                    name="password"
+                    required
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  ></input>
+                  <br />
+                  <a
+                    id="link"
+                    className="btn btn-primary btn-block"
+                    href="http://localhost:3000/login"
+                    onClick={() => this.handleClick()}
+                    role="button"
+                  >
+                    Register
+                  </a>
+                </form>
+                <p className="lead mt-4">
+                  Already have an account?
+                  <a href="http://localhost:3000/login"> Log in here!</a>
+                </p>
+              </div>
+            </div>
           </div>
-
-          <div className="Form Fields">
-            <label>Email</label>
-            <input
-              type="text"
-              placeholder="Enter your Email"
-              name="email"
-              required
-              value={this.state.email}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-
-          <div className="Form Fields">
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-
-          <div className="Form Fields">
-            <button
-              type="submit"
-              className="registerbtn"
-              onClick={() => this.handleClick()}
-            >
-              Register
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
-
-//CREATE REGISTER FORM

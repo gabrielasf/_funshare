@@ -23,7 +23,7 @@ export default class Edit extends Component {
       editAvailability: "",
     };
   }
-  /*
+
   componentDidMount() {
     this.getUserById(this.props.userId);
   }
@@ -57,33 +57,37 @@ export default class Edit extends Component {
   saveChanges = (event) => {
     event.preventDefault();
     fetch(`/users/${this.props.userId}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        editName: this.state.editName,
-        editNickname: this.state.editNickname,
-        editEmail: this.state.editEmail,
-        editPassword: this.state.editPassword,
-        editAvatar: this.state.editAvatar,
-        editLanguage: this.state.editLanguage,
-        editAddress: this.state.editAddress,
-        editCity: this.state.editCity,
-        editMyGame: this.state.editMyGame,
-        editMyGameLanguage: this.state.editMyGameLanguage,
-        editMyGamePlayers: this.state.editMyGamePlayers,
-        editMyGameCategory: this.state.editMyGameCategory,
-        editHost: this.state.editHost,
-        editGuest: this.state.editGuest,
-        editAboutMe: this.state.editAboutMe,
-        editEvents: this.state.editEvents,
-        editAvailability: this.state.editAvailability,
+        name: this.state.editName,
+        nickname: this.state.editNickname,
+        email: this.state.editEmail,
+        password: this.state.editPassword,
+        avatar: this.state.editAvatar,
+        language: this.state.editLanguage,
+        address: this.state.editAddress,
+        city: this.state.editCity,
+        myGame: this.state.editMyGame,
+        myGameLanguage: this.state.editMyGameLanguage,
+        myGamePlayers: this.state.editMyGamePlayers,
+        myGameCategory: this.state.editMyGameCategory,
+        host: this.state.editHost,
+        guest: this.state.editGuest,
+        aboutMe: this.state.editAboutMe,
+        events: this.state.editEvents,
+        availability: this.state.editAvailability,
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        this.setState({ allUsers: data });
+      .then((response) => {
+        if (response.error !== null) {
+          console.log(response.error);
+        } else {
+          console.log("Changes were saved");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -99,8 +103,6 @@ export default class Edit extends Component {
       [name]: value,
     });
   };
-
-  */
 
   render() {
     return (

@@ -313,6 +313,7 @@ router.patch("/:id", function (req, res) {
     newObj["availability"] = req.body.availability;
   }
 
+  console.log("This is the object", newObj);
   User.findByIdAndUpdate(
     req.params.id,
     {
@@ -320,11 +321,13 @@ router.patch("/:id", function (req, res) {
     },
     { new: true },
     function (err, user) {
+      console.log("this is our user", user);
       if (err) {
         console.log(err);
-        //res.render("../views/users/edit", {employee: req.body});
+        res.json({ error: err });
+      } else {
+        res.json({ error: null });
       }
-      res.redirect("/users");
     }
   );
 });

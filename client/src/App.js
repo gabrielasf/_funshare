@@ -16,7 +16,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       anything: "",
-      userId: [],
+      userId: "5ea42927612b0a45c8ceac26",
       allUsers: [],
     };
   }
@@ -61,7 +61,7 @@ export default class App extends Component {
               <MyAccount />
             </Route>
             <Route path="/edit">
-              <Edit />
+              <Edit userId={this.state.userId} />
             </Route>
             <Route path="/">
               <Home />

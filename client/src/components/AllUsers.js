@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MultiSelect from "react-multi-select-component";
 
 export default class AllUsers extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export default class AllUsers extends Component {
     this.state = {
       users: [],
       cityToFilter: "",
-      gameCategory: ""
+      gameCategory: []
     };
   }
 
@@ -32,6 +33,22 @@ export default class AllUsers extends Component {
       [name]: value
     });
   };
+
+  handleSelect = event => {
+    console.log("event", event);
+
+    this.setState({
+      gameCategory: event
+    });
+    // event.preventDefault();
+    // const value = event.target.value;
+    // const name = event.target.name;
+
+    // this.setState({
+    //   [name]: value
+    // });
+  };
+
 
   searchByCity = event => {
     event.preventDefault();
@@ -61,15 +78,18 @@ export default class AllUsers extends Component {
     });
   };
 
+
   searchByMultiple = (event) => {
     event.preventDefault();
+    let gameCategoryValue = this.state.gameCategory.map(e => e.value);
+    console.log("my game category value", gameCategoryValue);
     fetch("/users/filteredSearch", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        gameCategory: this.state.gameCategory,
+        gameCategory: gameCategoryValue,
         cityToFilter: this.state.cityToFilter,
       }),
     })
@@ -96,23 +116,26 @@ export default class AllUsers extends Component {
         </form>
         </div>
     */}
-
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
-          <select className="custom-select" onChange={this.handleInputChange} name="gameCategory">
-          <option selected>Choose...</option>
-          <option value="rollAndMove">Roll and Move</option>
-          <option value="workerPlacement">Worker Placement</option>
-          <option value="cooperative">Cooperative </option>
-          <option value="deckBuilding">Deck-Building </option>
-          <option value="areaControl">Area Control  </option>
-          <option value="secretIdentity">Secret Identity </option>
-          <option value="legacy">Legacy </option>
-          <option value="party">Party </option>
-          <option value="puzzle">Puzzle </option>
-          <option value="combat">Combat </option>
-          <option value="jigsaw">Jigsaw </option>
-          </select>
+          <MultiSelect
+            options={[
+              { label: "Roll and Move", value: "rollAndMove" },
+              { label: "Worker Placement", value: "workerPlacement" },
+              { label: "Cooperative", value: "cooperative" },
+              { label: "Deck-Building", value: "deckBuilding" },
+              { label: "Area Control", value: "areaControl" },
+              { label: "Secret Identity", value: "secretIdentity" },
+              { label: "Legacy", value: "legacy" },
+              { label: "Party", value: "party" },
+              { label: "Combat", value: "combat" },
+              { label: "Puzzle", value: "puzzle" },
+              { label: "Jigsaw", value: "jigsaw" }
+            ]}
+            value={this.state.gameCategory}
+            onChange={this.handleSelect}
+            labelledBy={"Select"}
+          />
           <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
           <button onClick={this.searchByMultiple}>Search</button>
         </div>

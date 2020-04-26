@@ -83,7 +83,7 @@ let obj = {};
 if (req.body.cityToFilter !== "") {
    obj["city"] = req.body.cityToFilter;
 }
-if (req.body.gameCategory !== "") {
+if (req.body.gameCategory.length !== 0) {
   obj["myGameCategory"] = req.body.gameCategory;
 }
 

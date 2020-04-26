@@ -38,7 +38,7 @@ export default class AllUsers extends Component {
     console.log("event", event);
 
     this.setState({
-      gameCategory: event
+      gameCategory: event,
     });
     // event.preventDefault();
     // const value = event.target.value;
@@ -60,14 +60,6 @@ export default class AllUsers extends Component {
     });
   };
 
-  searchByCategory = event => {
-    event.preventDefault();
-    fetch(`/users/category/${this.state.gameCategory}`)
-    .then((response) => response.json())
-    .then((response) => {
-      this.setState({ users: response})
-    });
-  };
 
   searchByCityAndCategory = event => {
     event.preventDefault();
@@ -82,7 +74,7 @@ export default class AllUsers extends Component {
   searchByMultiple = (event) => {
     event.preventDefault();
     let gameCategoryValue = this.state.gameCategory.map(e => e.value);
-    console.log("my game category value", gameCategoryValue);
+    
     fetch("/users/filteredSearch", {
       method: "POST",
       headers: {

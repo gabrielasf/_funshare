@@ -6,6 +6,7 @@ export default class Register extends Component {
     this.state = {
       users: [],
       name: "",
+      city: "",
       email: "",
       password: "",
     };
@@ -31,6 +32,7 @@ export default class Register extends Component {
       },
       body: JSON.stringify({
         name: this.state.name,
+        city: this.state.city,
         email: this.state.email,
         password: this.state.password,
       }),
@@ -84,6 +86,18 @@ export default class Register extends Component {
                     name="name"
                     required
                     value={this.state.name}
+                    onChange={this.handleChange}
+                  ></input>
+                  <br />
+                  <label>City</label>
+                  <br />
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Enter your City"
+                    name="city"
+                    required
+                    value={this.state.city}
                     onChange={this.handleChange}
                   ></input>
                   <br />

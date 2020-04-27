@@ -1,15 +1,14 @@
 var express = require("express");
 var router = express.Router();
-var User = require("../dbmodels/user");
+var User = require('../dbmodels/user');
 
-const bodyParser = require("body-parser");
-router.use(bodyParser.json()); //to support JSON-encoded body
-router.use(
-  bodyParser.urlencoded({
-    //to support URL-encoded body
-    extended: true,
-  })
-);
+const bodyParser = require("body-parser")  
+router.use(bodyParser.json());        //to support JSON-encoded body
+router.use(bodyParser.urlencoded({    //to support URL-encoded body
+  extended : true
+}));
+
+
 
 //get all users
 router.get("/", function (req, res, next) {
@@ -37,12 +36,22 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
-//get user by category
-router.get("/category/:myGameCategory", function (req, res, next) {
-  User.find({ myGameCategory: req.params.myGameCategory }, function (
-    err,
-    result
-  ) {
+//get user by email
+router.get('/login/:email', function(req, res, next) {
+  User.findOne({email: req.params.email}, function(err, result) {
+    console.log(result);
+    console.log("we connected");
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+//get use by category
+router.get('/category/:myGameCategory', function(req, res, next) {
+  User.find({"myGameCategory": req.params.myGameCategory}, function(err, result) {
     //console.log(result);
     console.log("we connected");
     if (err) {
@@ -137,6 +146,9 @@ router.patch("/:id", function (req, res) {
   }
   if (req.body.email !== undefined) {
     newObj["email"] = req.body.email;
+  }
+  if (req.body.username !== undefined) {  //WILL BE THE NEW EMAIL :)/ SIGN: GABI
+    newObj["username"] = req.body.username;
   }
   if (req.body.nickname !== undefined) {
     newObj["nickname"] = req.body.nickname;

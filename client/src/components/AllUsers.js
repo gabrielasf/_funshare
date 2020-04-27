@@ -5,6 +5,7 @@ export default class AllUsers extends Component {
         return (
             <div>
                 <h1>ALL USERS</h1>
+                <button>Log Out</button>
             </div>
         )
     }

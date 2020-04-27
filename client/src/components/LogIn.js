@@ -37,10 +37,11 @@ export default class LogIn extends Component {
       .then((result) => {
         localStorage.setItem('jwtToken', result.data.token);
         this.setState({loginState : "correct"})
+        //this.props.history.push('/allusers')
         //this.setState({ message: 'You are logged in!'});
-         //this.context.history.push('/allusers');  
-         //this.context.history.push('/');
+         this.context.history.push('/allusers');
       })
+      
       // .then((data) => {
       //   console.log(data);
       //   this.props.getUserId(data[0].id);

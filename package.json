@@ -16,6 +16,10 @@
     "mongoose": "^5.9.9",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.3",
+<<<<<<< HEAD
     "react-multi-select-component": "^2.0.4"
+=======
+    "opencage-api-client": "^0.7.1"
+>>>>>>> b2d4e10e16eea2a53dbb827fef4df9a537d33332
   }
 }

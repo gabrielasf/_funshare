@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 //Create Schema and Model
 
 const UserSchema = new Schema({
-
   name: String,
   language: String,
   city: String,
@@ -21,8 +20,19 @@ const UserSchema = new Schema({
   guest: Boolean,
   aboutMe: String,
   events: String,
-  availability: String
+  availability: String,
 
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number], // Array of arrays of arrays of numbers
+      required: true,
+    },
+  },
 });
 
 const User = mongoose.model("user", UserSchema);

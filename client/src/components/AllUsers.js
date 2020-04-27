@@ -20,7 +20,7 @@ export default class AllUsers extends Component {
       .then((response) => response.json())
       .then((response) => {
         this.setState({ users: response });
-        console.log(this.state.users);
+        //console.log(this.state.users);
       });
   };
 
@@ -68,13 +68,18 @@ export default class AllUsers extends Component {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
+      console.log("filtered search response", response);
       this.setState({users: response})
     })
     .catch((error) => {
       console.error('Error:', error);
     });
   }
+
+ /* <div>
+  <span className="label">My Game Category: </span>
+  {user.myGameCategory}{" "}
+</div> */
 
   render() {
     return (
@@ -109,7 +114,7 @@ export default class AllUsers extends Component {
           <div className="row">
               {this.state.users.map((user, index) => {
                 return (
-                  <div key={index} className="col-3">
+                  <div key={index} className="col-4">
                     <div className=" userDisplay shadow rounded border">
                       <div>
                         <span className="label">Name: </span>
@@ -117,23 +122,40 @@ export default class AllUsers extends Component {
                       </div>
                       <div>
                         <span className="label">City: </span>
-                        {user.city}{" "}
-                      </div>
-                      <div>
-                        <span className="label">Language: </span>
-                        {user.language}{" "}
-                      </div>
-                      <div>
-                        <span className="label">My game: </span>
-                        {user.myGame}
-                      </div>
-                      <div>
-                        <span className="label">My Game Category: </span>
-                        {user.myGameCategory}{" "}
+                        {user.city}
                       </div>
                       <div>
                         <span className="label">Email: </span>
-                        {user.email}{" "}
+                        {user.email}
+                      </div>
+                      <div className="mb-3">
+                        <span className="label">Language: </span>
+                        {user.language}
+                      </div>
+                      <div>
+                        <span>My games: </span>
+                        {user.myGame.map((game, index) => {
+                          return (
+                          <div className="mb-4" key={index}>
+                            <div>
+                              <span>Game's Name: </span>
+                              {game.myGameName}
+                            </div>
+                            <div>
+                              <span>Game's Language: </span>
+                              {game.myGameLanguage}
+                            </div>
+                            <div>
+                              <span>Players: </span>
+                              {game.myGamePlayers}
+                            </div>
+                            <div>
+                              <span>Game's Category: </span>
+                              {game.myGameCategory}
+                            </div>
+                          </div>
+                          )
+                        })}
                       </div>
                     </div>
                   </div>

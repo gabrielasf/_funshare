@@ -84,7 +84,7 @@ if (req.body.cityToFilter !== "") {
    obj["city"] = req.body.cityToFilter;
 }
 if (req.body.gameCategory.length !== 0) {
-  obj["myGameCategory"] = req.body.gameCategory;
+  obj["myGame.myGameCategory"] = req.body.gameCategory;
 }
 
 console.log("to jest obiekt", obj);
@@ -100,7 +100,7 @@ console.log("to jest obiekt", obj);
   });
 })
 //add new user GEOCODE
-router.post("/", function (req, res) {
+/*router.post("/", function (req, res) {
   const geoCoord = {
     type: "Point",
     coordinates: [41.390205, 2.154007],
@@ -114,9 +114,9 @@ router.post("/", function (req, res) {
     res.json(user);
     console.log(err);
   });
-});
+}); */
 
-/*
+
 //add new user
 router.post("/", function (req, res) {
     let user = new User(req.body);
@@ -126,7 +126,6 @@ router.post("/", function (req, res) {
   });
 });
 
-*/
 
 //delete by id
 router.delete("/:id", function (req, res) {

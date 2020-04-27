@@ -8,10 +8,11 @@ const UserSchema = new Schema({
   language: String,
   city: String,
   address: String,
-  myGame: String,
-  myGameLanguage: String,
-  myGamePlayers: Number,
-  myGameCategory: String,
+  myGame: [{
+    myGameName: String,  
+    myGameLanguage: String,
+    myGamePlayers: Number,
+    myGameCategory: String}],
   email: String,
   nickname: String,
   password: String,
@@ -22,7 +23,7 @@ const UserSchema = new Schema({
   events: String,
   availability: String,
 
-  location: {
+  /*location: {
     type: {
       type: String,
       enum: ["Point"],
@@ -32,7 +33,7 @@ const UserSchema = new Schema({
       type: [Number], // Array of arrays of arrays of numbers
       required: true,
     },
-  },
+  }, */
 });
 
 const User = mongoose.model("user", UserSchema);

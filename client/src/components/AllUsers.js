@@ -40,26 +40,7 @@ export default class AllUsers extends Component {
     this.setState({
       gameCategory: event,
     });
-    // event.preventDefault();
-    // const value = event.target.value;
-    // const name = event.target.name;
-
-    // this.setState({
-    //   [name]: value
-    // });
   };
-
-
-  searchByCity = event => {
-    event.preventDefault();
-    fetch(`/users/city/${this.state.cityToFilter}`)
-    .then((response) => response.json())
-    .then((response) => {
-      //console.log(response);
-      this.setState({ users: response})
-    });
-  };
-
 
   searchByCityAndCategory = event => {
     event.preventDefault();
@@ -99,15 +80,7 @@ export default class AllUsers extends Component {
     return (
       <div>
         <h1>ALL USERS</h1>
-
-       {/* <div className="input-group mb-3 input-group-prepend">
-        <label className="input-group-text" for="inputGroupSelect01">City</label>
-        <form onSubmit={this.searchByCity}>
-          <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
-          <input type="submit" value="Search" />
-        </form>
-        </div>
-    */}
+        
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
           <MultiSelect

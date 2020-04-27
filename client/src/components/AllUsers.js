@@ -80,7 +80,7 @@ export default class AllUsers extends Component {
     return (
       <div>
         <h1>ALL USERS</h1>
-        
+
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
           <MultiSelect

@@ -48,7 +48,7 @@ export default class App extends Component {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -56,11 +56,12 @@ export default class App extends Component {
             <li>
               <Link to="/about">About</Link>
             </li>
-            {/* <li>
+             <li>
               <Link to="/allusers">All Users</Link>
-            </li> */}
+            </li> 
           </ul>
-        </nav>
+        </nav> */}
+
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>

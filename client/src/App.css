@@ -1,3 +1,5 @@
+
+/* REGISTER PAGE */
 .btn {
   margin-top: 5px;
   margin-left: 5px;
@@ -13,6 +15,7 @@
 body {
   background: #222222;
   background: linear-gradient(to right, rgb(13, 13, 14), rgb(21, 25, 27));
+  font-family: 'Open Sans', sans-serif;
 }
 
 .card-signin {
@@ -124,10 +127,18 @@ body {
   background-color: #3b5998;
 }
 
+/* END OF REGISTER PAGE */
 
 
 
 
+/*
+*
+* ==========================================
+* LOG IN / HOME
+* ==========================================
+*
+*/
 
 :root {
   --input-padding-x: 1.5rem;
@@ -140,7 +151,7 @@ body {
 }
 
 .bg-image {
-  background-image: url('https://source.unsplash.com/600x900/?board-game');
+  background-image: url('https://source.unsplash.com/600x900/?board-game,dice');
   background-size: cover;
   background-position: center;
 }
@@ -247,3 +258,79 @@ body {
     color: #777;
   }
 }
+
+/*END OF LOG IN PAGE */
+
+
+/*
+*
+* ==========================================
+* ABOUT
+* ==========================================
+*
+*/
+
+/* Rounded tabs */
+
+@media (min-width: 576px) {
+  .rounded-nav {
+    border-radius: 50rem !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .rounded-nav .nav-link {
+    border-radius: 50rem !important;
+  }
+}
+
+/* With arrow tabs */
+
+.with-arrow .nav-link.active {
+  position: relative;
+}
+
+.with-arrow .nav-link.active::after {
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #2b90d9;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+}
+
+/* lined tabs */
+
+.lined .nav-link {
+  border: none;
+  border-bottom: 3px solid transparent;
+}
+
+.lined .nav-link:hover {
+  border: none;
+  border-bottom: 3px solid transparent;
+}
+
+.lined .nav-link.active {
+  background: none;
+  color: #555;
+  border-color: #2b90d9;
+}
+
+ 
+body {
+  background: #222222;
+  background: -webkit-linear-gradient(to right, #111518, #2f302f);
+  background: linear-gradient(to right, #0d1013, #363636);
+  min-height: 100vh;
+}
+
+.nav-pills .nav-link {
+  color: #555;
+}
+.text-uppercase {
+  letter-spacing: 0.1em;
+} 

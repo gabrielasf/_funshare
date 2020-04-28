@@ -8,29 +8,6 @@ var User = require("../dbmodels/user");
 var bcrypt = require('bcrypt');
 
 
-
-
-//'/register'
-// router.post('/register', function(req, res) { //AUTH/REGISTER
-//   if (!req.body.username || !req.body.password || !req.body.name || !req.body.city ) {
-//     res.json({success: false, msg: 'Please enter all info required.'});
-//   } else {
-//     var newUser = new User({
-//       name: req.body.name,
-//       city: req.body.city,
-//       username: req.body.username,
-//       password: req.body.password
-//     });
-//     // save the user
-//     newUser.save(function(err) {
-//       if (err) {
-//         return res.json({success: false, msg: 'Error :('});
-//       }
-//       res.json({success: true, msg: 'Successful created new user.'});
-//     });
-//   }
-// });
-
 //login
 router.post('/login', function(req, res) { 
   console.log('checking in');
@@ -52,8 +29,7 @@ router.post('/login', function(req, res) {
                 return next(err);
             }
             user.password = hash;
-            console.log("hash",err);
-            console.log(hash);
+            console.log(("hash",err), hash);
             //next();
         });
       })

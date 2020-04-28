@@ -9,32 +9,35 @@ var bcrypt = require('bcrypt');
 
 
 
-//'/register'
-router.post('/register', function(req, res) { //AUTH/REGISTER
-  if (!req.body.username || !req.body.password) {
-    res.json({success: false, msg: 'Please enter username and password.'});
-  } else {
-    var newUser = new User({
-      username: req.body.username,
-      password: req.body.password
-    });
-    // save the user
-    newUser.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Username already exists.'});
-      }
-      res.json({success: true, msg: 'Successful created new user.'});
-    });
-  }
-});
 
-router.post('/login', function(req, res) { //OR GET SINCE WE'RE SENDING INFO TO MATCH?
+//'/register'
+// router.post('/register', function(req, res) { //AUTH/REGISTER
+//   if (!req.body.username || !req.body.password || !req.body.name || !req.body.city ) {
+//     res.json({success: false, msg: 'Please enter all info required.'});
+//   } else {
+//     var newUser = new User({
+//       name: req.body.name,
+//       city: req.body.city,
+//       username: req.body.username,
+//       password: req.body.password
+//     });
+//     // save the user
+//     newUser.save(function(err) {
+//       if (err) {
+//         return res.json({success: false, msg: 'Error :('});
+//       }
+//       res.json({success: true, msg: 'Successful created new user.'});
+//     });
+//   }
+// });
+
+//login
+router.post('/login', function(req, res) { 
   console.log('checking in');
   User.findOne({
     username: req.body.username
   }, function(err, user) {
     if (err) throw err;
-
     if (!user) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
@@ -68,8 +71,5 @@ router.post('/login', function(req, res) { //OR GET SINCE WE'RE SENDING INFO TO 
     }
   });
 });
-
-
-
 
 module.exports = router;

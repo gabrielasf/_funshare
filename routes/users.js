@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var User = require('../dbmodels/user');
+var passport = require('passport');
+require('../config/passport')(passport);
 
 const bodyParser = require("body-parser")  
 router.use(bodyParser.json());        //to support JSON-encoded body
@@ -9,19 +11,21 @@ router.use(bodyParser.urlencoded({    //to support URL-encoded body
 }));
 
 
-
 //get all users
-router.get("/", function (req, res, next) {
+router.get("/", passport.authenticate('jwt', { session: false}), function (req, res, next) {
+  var token = getToken(req.headers);
+  if (token) {
   User.find({}, function (err, result) {
-    console.log(result);
-    console.log("we connected");
-    if (err) {
+     console.log("we connected");
+      if (err) return next(err);
       console.log(err);
-    } else {
       res.json(result);
-    }
   });
+    } else {
+      return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
 });
+
 
 //get user by id
 router.get("/:id", function (req, res, next) {
@@ -36,18 +40,6 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
-//get user by email
-router.get('/login/:email', function(req, res, next) {
-  User.findOne({email: req.params.email}, function(err, result) {
-    console.log(result);
-    console.log("we connected");
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
 
 //get use by category
 router.get('/category/:myGameCategory', function(req, res, next) {
@@ -92,17 +84,19 @@ router.post("/", function (req, res) {
   });
 });
 
-/*
+
 //add new user
 router.post("/", function (req, res) {
-    let user = new User(req.body);
+  
+  let user = new User(req.body);
   user.save(function (err, user) {
     res.json(user);
     console.log(err);
   });
+
 });
 
-*/
+
 
 //delete by id
 router.delete("/:id", function (req, res) {
@@ -192,6 +186,21 @@ router.patch("/:id", function (req, res) {
       }
     }
   );
+
+  getToken = function (headers) {
+    if (headers && headers.authorization) {
+      var parted = headers.authorization.split(' ');
+      if (parted.length === 2) {
+        return parted[1];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  };
+
+
 });
 
 module.exports = router;

@@ -6,6 +6,7 @@ import Register from "./components/Register.js";
 import About from "./components/About.js";
 import MyAccount from "./components/MyAccount.js";
 import Edit from "./components/Edit.js";
+import Event from "./components/Event.js";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -62,6 +63,9 @@ export default class App extends Component {
             </Route>
             <Route path="/edit">
               <Edit userId={this.state.userId} />
+            </Route>
+            <Route path="/event">
+              <Event />
             </Route>
             <Route path="/">
               <Home />

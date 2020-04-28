@@ -139,15 +139,20 @@ router.delete("/:id", function (req, res) {
   });
 });
 
+// //update game by name
+// router.patch("/:gamesName", function(req, res){
+//   let newObj = {};
+
+//   }
+// )
+
 //update user by id
 router.patch("/:id", function (req, res) {
   let newObj = {};
+  console.log("body of the request", req.body)
 
   if (req.body.name !== undefined) {
     newObj["name"] = req.body.name;
-  }
-  if (req.body.language !== undefined) {
-    newObj["language"] = req.body.language;
   }
   if (req.body.address !== undefined) {
     newObj["address"] = req.body.address;
@@ -178,12 +183,6 @@ router.patch("/:id", function (req, res) {
   }
   if (req.body.avatar !== undefined) {
     newObj["avatar"] = req.body.avatar;
-  }
-  if (req.body.host !== undefined) {
-    newObj["host"] = req.body.host;
-  }
-  if (req.body.guest !== undefined) {
-    newObj["guest"] = req.body.guest;
   }
   if (req.body.aboutMe !== undefined) {
     newObj["aboutMe"] = req.body.aboutMe;

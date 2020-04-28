@@ -128,10 +128,6 @@ export default class AllUsers extends Component {
                         <span className="label">Email: </span>
                         {user.email}
                       </div>
-                      <div className="mb-3">
-                        <span className="label">Language: </span>
-                        {user.language}
-                      </div>
                       <div>
                         <span>My games: </span>
                         {user.myGame.map((game, index) => {

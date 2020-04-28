@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import styles from "./MyAccount.css";
+import EditProfile from "./EditProfile";
+import EditMyGames from "./EditMyGames";
 
 export default class MyAccount extends Component {
   constructor(props) {
@@ -7,201 +10,97 @@ export default class MyAccount extends Component {
       name: "",
       nickname: "",
       email: "",
-      password: "",
       avatar: "",
-      language: "",
-      address: "",
-      city: "",
-      myGame: "",
-      myGameLanguage: "",
-      myGamePlayers: "",
-      myGameCategory: "",
-      host: "",
-      guest: "",
-      aboutMe: "",
-      events: "",
-      availability: "",
+      mode: "games",
     };
   }
 
+  componentDidMount() {
+    this.getUserById(this.props.userId);
+  }
+
+  getUserById = (id) => {
+    fetch(`/users/${this.props.userId}`)
+      .then((res) => res.json())
+      .then((response) => {
+        this.setState({
+          name: response.name,
+          nickname: response.nickname,
+          email: response.email,
+          avatar: response.avatar
+        });
+      });
+  };
+
+  toggleView = () => {
+    if (this.state.mode === "profile") {
+      return <EditProfile userId={this.props.userId} />
+    } else if (this.state.mode === "games") {
+      return <EditMyGames userId={this.props.userId}/>
+    }
+  }
+
+  seeProfile = () => {
+    this.setState({mode: "profile"})
+  }
+
+  seeGames = () => {
+    this.setState({mode: "games"})
+  }
+
+  addNewGame = () => {};
+
+  
   render() {
-    return (
-      <div className="container">
-        <h1 className="text-center mb-3">My Account</h1>
-        <p className="text-center mb-3">See my details and edit account</p>
-        <div className="form-group">
-          <div className="row mt-5">
-            <div className="col-md-6 m-auto">
-              <div className="card card-body">
-                <form>
-                  <br />
-                  <label>Name:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="name"
-                    name="Name"
-                  />
-                  <br />
-                  <label>Nickname:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="nickname"
-                    name="nickname"
-                  />
-                  <br />
-                  <label>Email:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="email"
-                    name="email"
-                  />
-                  <br />
-                  <label>Password:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="password"
-                    name="password"
-                  />
-                  <br />
-                  <label>Avatar:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="avatar"
-                    name="avatar"
-                  />
-                  <br />
-                  <label>Language:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="language"
-                    name="language"
-                  />
-                  <br />
-                  <label>Address:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="address"
-                    name="address"
-                  />
-                  <br />
-                  <label>City:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="city"
-                    name="city"
-                  />
-                  <br />
-                  <label>My game:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="myGame"
-                    name="myGame"
-                  />
-                  <br />
-                  <label>My game language:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="myGameLanguage"
-                    name="myGameLanguage"
-                  />
-                  <br />
-                  <label>My game players:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="myGamePlayers"
-                    name="myGamePlayers"
-                  />
-                  <br />
-                  <label>My game category:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="myGameCategory"
-                    name="myGameCategory"
-                  />
-                  <label>Host:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="host"
-                    name="host"
-                  />
-                  <br />
-                  <label>Guest:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="guest"
-                    name="guest"
-                  />
-                  <br />
-                  <label>About me:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="aboutMe"
-                    name="aboutMe"
-                  />
-                  <br />
-                  <label>Events:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="events"
-                    name="events"
-                  />
-                  <br />
-                  <label>Availability:</label>
-                  <br />
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="availability"
-                    name="availability"
-                  />
-                  <br />
-                  <a
-                    id="link"
-                    className="btn btn-primary btn-lg"
-                    href="http://localhost:3000/edit"
-                    role="button"
-                  >
-                    Edit
-                  </a>
-                  <br />
-                </form>
-              </div>
+      return (
+        <div>
+          <div className="container">
+            <div className="view-account">
+              <section className="module">
+                <div className="module-inner">
+                  <div className="side-bar">
+                    <div className="user-info">
+                      <img
+                        className="img-profile img-circle img-responsive center-block"
+                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                        alt=""
+                      />
+                      <ul className="meta list list-unstyled">
+                        <li className="name">
+                          {this.state.name}
+                        </li>
+                        <li> <label className="label label-info">
+                           {this.state.nickname}
+                          </label>
+                          </li>
+                        <li className="email">
+                          <a href="#">{this.state.email}</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <nav className="side-menu">
+                      <ul className="nav">
+                        <li className={this.state.mode === "profile" ? "active" : ""}>
+                          <a onClick={this.seeProfile} href="#">
+                            <span className="fa fa-user"></span> Profile
+                          </a>
+                        </li>
+                        <li className={this.state.mode === "games" ? "active" : ""}>
+                          <a onClick={this.seeGames} href="#">
+                            <span className="fa fa-cog"></span> My games
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div className="content-panel">
+                    {this.toggleView()}
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }

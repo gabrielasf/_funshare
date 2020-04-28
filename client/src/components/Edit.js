@@ -9,7 +9,6 @@ export default class Edit extends Component {
       editEmail: "",
       editPassword: "",
       editAvatar: "",
-      editLanguage: "",
       editAddress: "",
       editCity: "",
       editMyGame: "",
@@ -29,7 +28,7 @@ export default class Edit extends Component {
   }
 
   getUserById = (id) => {
-    fetch(`/users/${this.props.userId}`) // not sure about the prop
+    fetch(`/users/${this.props.userId}`) 
       .then((res) => res.json())
       .then((response) => {
         this.setState({
@@ -38,15 +37,12 @@ export default class Edit extends Component {
           editEmail: response.email,
           editPassword: response.password,
           editAvatar: response.avatar,
-          editLanguage: response.language,
           editAddress: response.address,
           editCity: response.city,
           editMyGame: response.myGame,
           editMyGameLanguage: response.myGameLanguage,
           editMyGamePlayers: response.myGamePlayers,
           editMyGameCategory: response.myGameCategory,
-          editHost: response.host,
-          editGuest: response.guest,
           editAboutMe: response.aboutMe,
           editEvents: response.events,
           editAvailability: response.availability,
@@ -67,15 +63,12 @@ export default class Edit extends Component {
         email: this.state.editEmail,
         password: this.state.editPassword,
         avatar: this.state.editAvatar,
-        language: this.state.editLanguage,
         address: this.state.editAddress,
         city: this.state.editCity,
         myGame: this.state.editMyGame,
         myGameLanguage: this.state.editMyGameLanguage,
         myGamePlayers: this.state.editMyGamePlayers,
         myGameCategory: this.state.editMyGameCategory,
-        host: this.state.editHost,
-        guest: this.state.editGuest,
         aboutMe: this.state.editAboutMe,
         events: this.state.editEvents,
         availability: this.state.editAvailability,
@@ -177,17 +170,6 @@ export default class Edit extends Component {
                       defaultValue={this.state.editAvatar}
                     />
                     <br />
-                    <label>Language:</label>
-                    <br />
-                    <input
-                      onChange={this.handleInputChange}
-                      className="form-control"
-                      type="text"
-                      id="editLanguage"
-                      name="editLanguage"
-                      defaultValue={this.state.editLanguage}
-                    />
-                    <br />
                     <label>Address:</label>
                     <br />
                     <input
@@ -254,28 +236,6 @@ export default class Edit extends Component {
                       defaultValue={this.state.editMyGameCategory}
                     />
                     <br />
-                    <label>Host:</label>
-                    <br />
-                    <input
-                      onChange={this.handleInputChange}
-                      className="form-control"
-                      type="text"
-                      id="editHost"
-                      name="editHost"
-                      defaultValue={this.state.editHost}
-                    />
-                    <br />
-                    <label>Guest:</label>
-                    <br />
-                    <input
-                      onChange={this.handleInputChange}
-                      className="form-control"
-                      type="text"
-                      id="editAboutMe"
-                      name="editAboutMe"
-                      defaultValue={this.state.editAboutMe}
-                    />
-                    <br />
                     <label>About me:</label>
                     <br />
                     <input
@@ -284,7 +244,7 @@ export default class Edit extends Component {
                       type="text"
                       id="editGuest"
                       name="editGuest"
-                      defaultValue={this.state.editGuest}
+                      defaultValue={this.state.editAboutMe}
                     />
                     <br />
                     <label>Events:</label>

@@ -17,7 +17,7 @@ export default class extends Component {
     <ul id="myTab" role="tablist" className="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
       
       <li className="nav-item flex-sm-fill">
-        <a id="home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="home" aria-selected="true" className="nav-link border-0 text-uppercase font-weight-bold active">About us</a>
+        <a id="about-tab" data-toggle="tab" href="#xaboutus" role="tab" aria-controls="home" aria-selected="true" className="nav-link border-0 text-uppercase font-weight-bold active">About us</a>
       </li>
 
       <li className="nav-item flex-sm-fill">
@@ -29,22 +29,29 @@ export default class extends Component {
       </li>
 
       <li className="nav-item flex-sm-fill">
-        <a id="realcontact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="realcontact" aria-selected="false" className="nav-link border-0 text-uppercase font-weight-bold">Contact Us</a>
+        <a id="realcontact-tab" data-toggle="tab" href="#realcontact" role="tab" aria-controls="realcontact" aria-selected="false" className="nav-link border-0 text-uppercase font-weight-bold">Contact Us</a>
          
-      </li>
+      </li> 
     </ul>
     
 
 
     <div id="myTabContent" className="tab-content">
      
-      <div id="about" role="tabpanel" aria-labelledby="home-tab" className="tab-pane fade px-4 py-5 show active">
+      <div id="xaboutus" role="tabpanel" aria-labelledby="home-tab" className="tab-pane fade px-4 py-5 show active">
       <h3>funshare® oversharing:</h3>
       <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p className="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
+
+      <div id="realcontact" role="tabpanel" aria-labelledby="contact-tab" className="tab-pane fade px-4 py-5">
+      <h3>We're listening.</h3>
+      <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+       </div>  
 
       <div id="categories" role="tabpanel" aria-labelledby="profile-tab" className="tab-pane fade px-4 py-5">
       <h3>Our categories explained.</h3>
@@ -200,11 +207,6 @@ export default class extends Component {
        </p>  
         <hr/>
         <p className="small"><i>Credit: <a href="https://nonstoptabletop.com/blog/2017/7/30/the-10-types-of-board-games-everyone-should-know-about">article</a> by Happy Strategerist</i></p>
-
-
-
-
-
       </div>
 
       
@@ -241,12 +243,6 @@ export default class extends Component {
         <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
-
-      <div id="contact" role="tabpanel" aria-labelledby="contact-tab" className="tab-pane fade px-4 py-5 show active">
-      <h3>We're listening.</h3>
-      <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-       </div>
 
     </div>
     

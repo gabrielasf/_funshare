@@ -7,7 +7,7 @@ export default class EditMyGames extends Component {
       allGames: [],
       myGameName: "",
       myGameLanguage: "",
-      myGamePlayers: null,
+      myGamePlayers: undefined,
       myGameCategory: "",
     };
   }
@@ -37,7 +37,6 @@ export default class EditMyGames extends Component {
     });
   };
 
-
   addNewGame = (event) => {
     event.preventDefault();
     let newGame = {};
@@ -53,9 +52,9 @@ export default class EditMyGames extends Component {
     if (this.state.myGameCategory !== "") {
       newGame["myGameCategory"] = this.state.myGameCategory;
     }
-    console.log("this is new game", newGame);
 
-    let updatedGames = [...this.state.allGames, newGame]
+    let updatedGames = [...this.state.allGames, newGame];
+
     this.setState({
       allGames: updatedGames,
     });
@@ -66,15 +65,15 @@ export default class EditMyGames extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        myGame: updatedGames
-      })
+        myGame: updatedGames,
+      }),
     })
       .then((response) => response.json())
       .then((response) => {
         if (response.error !== null) {
           console.log(response.error);
         } else {
-          console.log("Changes were saved");
+          console.log("New game added!");
         }
       })
       .catch((error) => {
@@ -109,22 +108,59 @@ export default class EditMyGames extends Component {
             Game's Players:
             <input
               onChange={this.handleInputChange}
-              type="number"
+              type="text"
               name="myGamePlayers"
               value={this.state.myGamePlayers}
             />
           </div>
           <div>
             Game's Category:
-            <input
+            <select
+              className="custom-select"
               onChange={this.handleInputChange}
-              type="text"
               name="myGameCategory"
-              value={this.state.myGameCategory}
-            />
+            >
+              <option selected>Choose...</option>
+              <option value="rollAndMove">Roll and Move</option>
+              <option value="workerPlacement">Worker Placement</option>
+              <option value="cooperative">Cooperative </option>
+              <option value="deckBuilding">Deck-Building </option>
+              <option value="areaControl">Area Control </option>
+              <option value="secretIdentity">Secret Identity </option>
+              <option value="legacy">Legacy </option>
+              <option value="party">Party </option>
+              <option value="puzzle">Puzzle </option>
+              <option value="combat">Combat </option>
+              <option value="jigsaw">Jigsaw </option>
+            </select>
           </div>
           <input type="submit" value="Add new game" />
         </form>
+        <div>
+          <span>My games: </span>
+          {this.state.allGames.map((game, index) => {
+            return (
+              <div className="mb-4" key={index}>
+                <div>
+                  <span>Game's Name: </span>
+                  {game.myGameName}
+                </div>
+                <div>
+                  <span>Game's Language: </span>
+                  {game.myGameLanguage}
+                </div>
+                <div>
+                  <span>Players: </span>
+                  {game.myGamePlayers}
+                </div>
+                <div>
+                  <span>Game's Category: </span>
+                  {game.myGameCategory}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

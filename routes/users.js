@@ -11,7 +11,7 @@ router.use(
   })
 );
 
-//get all users
+//GET all users
 router.get("/", function (req, res, next) {
   User.find({}, function (err, result) {
     console.log(result);
@@ -24,7 +24,7 @@ router.get("/", function (req, res, next) {
   });
 });
 
-//get user by id
+//GET user by id
 router.get("/:id", function (req, res, next) {
   User.findOne({ _id: req.params.id }, function (err, result) {
     console.log(result);
@@ -37,7 +37,7 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
-//get user by category
+//GET user by category
 router.get('/category/:myGameCategory', function(req, res, next) {
   User.find({"myGameCategory": req.params.myGameCategory}, function(err, result) {
     //console.log(result);
@@ -50,7 +50,7 @@ router.get('/category/:myGameCategory', function(req, res, next) {
   });
 });
 
-//get user by city
+//GET user by city
 router.get('/city/:city', function(req, res, next) {
   User.find({"city": req.params.city}, function(err, result) {
     //console.log(result);
@@ -63,20 +63,7 @@ router.get('/city/:city', function(req, res, next) {
   });
 });
 
-//get user by city and category
-router.get('/cityAndCategory/:city/:myGameCategory', function(req, res, next) {
-  User.find({"city": req.params.city, "myGameCategory": req.params.myGameCategory}, function(err, result) {
-    //console.log(result);
-    console.log("we connected");
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-//get user by multiple filters
+//GET user by multiple filters
 router.post('/filteredSearch', function(req, res){
   //console.log("body request", req.body);
 let obj = {};
@@ -85,6 +72,9 @@ if (req.body.cityToFilter !== "") {
 }
 if (req.body.gameCategory.length !== 0) {
   obj["myGame.myGameCategory"] = req.body.gameCategory;
+}
+if (req.body.gameLanguage !== "") {
+  obj["myGame.myGameLanguage"] = req.body.gameLanguage;
 }
 
 console.log("to jest obiekt", obj);
@@ -117,7 +107,7 @@ console.log("to jest obiekt", obj);
 }); */
 
 
-//add new user
+//ADD new user
 router.post("/", function (req, res) {
     let user = new User(req.body);
   user.save(function (err, user) {
@@ -127,7 +117,7 @@ router.post("/", function (req, res) {
 });
 
 
-//delete by id
+//DELETE user by id
 router.delete("/:id", function (req, res) {
   User.remove({ _id: req.params.id }, function (err) {
     if (err) {
@@ -146,7 +136,7 @@ router.delete("/:id", function (req, res) {
 //   }
 // )
 
-//update user by id
+//UPDATE user by id, ADD new game
 router.patch("/:id", function (req, res) {
   let newObj = {};
   console.log("body of the request", req.body)
@@ -162,15 +152,6 @@ router.patch("/:id", function (req, res) {
   }
   if (req.body.myGame !== undefined) {
     newObj["myGame"] = req.body.myGame;
-  }
-  if (req.body.myGameLanguage !== undefined) {
-    newObj["myGameLanguage"] = req.body.myGameLanguage;
-  }
-  if (req.body.myGamePlayers !== undefined) {
-    newObj["myGamePlayers"] = req.body.myGamePlayers;
-  }
-  if (req.body.myGameCategory !== undefined) {
-    newObj["myGameCategory"] = req.body.myGameCategory;
   }
   if (req.body.email !== undefined) {
     newObj["email"] = req.body.email;

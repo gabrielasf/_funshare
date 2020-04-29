@@ -7,7 +7,8 @@ export default class AllUsers extends Component {
     this.state = {
       users: [],
       cityToFilter: "",
-      gameCategory: []
+      gameCategory: [],
+      gameLanguage: ""
     };
   }
 
@@ -64,6 +65,7 @@ export default class AllUsers extends Component {
       body: JSON.stringify({
         gameCategory: gameCategoryValue,
         cityToFilter: this.state.cityToFilter,
+        gameLanguage: this.state.gameLanguage
       }),
     })
     .then((response) => response.json())
@@ -76,10 +78,6 @@ export default class AllUsers extends Component {
     });
   }
 
- /* <div>
-  <span className="label">My Game Category: </span>
-  {user.myGameCategory}{" "}
-</div> */
 
   render() {
     return (
@@ -106,7 +104,10 @@ export default class AllUsers extends Component {
             onChange={this.handleSelect}
             labelledBy={"Select"}
           />
+          <label>City:</label>
           <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
+          <label>Game's Language:</label>
+          <input onChange={this.handleInputChange} type="text" name="gameLanguage" value={this.state.gameLanguage} />
           <button onClick={this.searchByMultiple}>Search</button>
         </div>
 

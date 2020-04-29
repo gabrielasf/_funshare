@@ -43,8 +43,8 @@ return (
                     <i className="fa fa-phone-square"></i>
                   </div>
                   <div className="list-details">
-                    <span>+34 698568803</span>
-                    <small>Mobile Number</small>
+                    <span>Lili</span>
+                    <small>Nickname</small>
                   </div>
                 </li>
                 <li className="list-group-item">
@@ -52,7 +52,7 @@ return (
                     <i className="fa fa-envelope"></i>
                   </div>
                   <div className="list-details">
-                    <span>info@example.com</span>
+                    <span>liz@bla.com</span>
                     <small>Email Address</small>
                   </div>
                 </li>
@@ -61,27 +61,26 @@ return (
                     <i className="fa fa-globe"></i>
                   </div>
                   <div className="list-details">
-                    <span>www.example.com</span>
-                    <small>Website Address</small>
+                    <span><a href="/about" className="btn btn-warning btn-sm m-0 p-0">funshare® User Info</a> </span>
+                
                   </div>
                 </li>
                 </ul>
 
                 <div className="row text-center mt-4">
-                  <div className="col p-2">
-                   
+                    <div className="col p-2">
+                    <button className="btn btn-primary" onClick={this.logout}>Logout</button> 
+                    </div>
+                    <div className="col p-2">
+                    </div>
+                    <div className="col p-2">
                    </div>
-                    <div className="col p-2">
-                    
-                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
-                     
-                    </div>
-                    <div className="col p-2">
-                     
-                    </div>
                  </div>
+                
+                 
+                </div>
 
-               </div>
+
                <div className="card-footer text-center">
                  <a href="javascript:void()" className="btn-social btn-facebook waves-effect waves-light m-1"><i className="fa fa-facebook"></i></a>
                  <a href="javascript:void()" className="btn-social btn-google-plus waves-effect waves-light m-1"><i className="fa fa-google-plus"></i></a>
@@ -119,19 +118,18 @@ return (
                             </p>
                         </div>
                         <div className="col-md-6">
-                            <h6>Recent badges</h6>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">html5</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">react</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">codeply</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">angularjs</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">css3</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">jquery</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">bootstrap</a>
-                            <a href="javascript:void();" className="badge badge-dark badge-pill">responsive-design</a>
+                            <h6>My Games</h6>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Rummikub</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Monopoly</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Scrabble</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Cluedo</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Catan</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Risk</a>
+                            <a href="javascript:void();" className="badge badge-dark badge-pill">Battleship</a>
                             <hr/>
-                            <span className="badge badge-primary"><i className="fa fa-user"></i> 900 Followers</span>
-                            <span className="badge badge-success"><i className="fa fa-cog"></i> 43 Forks</span>
-                            <span className="badge badge-danger"><i className="fa fa-eye"></i> 245 Views</span>
+                            <span className="badge badge-primary"><i className="fa fa-user"></i> 43 Connections</span>
+                            <span className="badge badge-success"><i className="fa fa-cog"></i> 15 Events</span>
+                            <span className="badge badge-danger"><i className="fa fa-eye"></i> 4 Groups</span>
                         </div>
                         <div className="col-md-12">
                             <h5 className="mt-2 mb-3"><span className="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -295,10 +293,14 @@ return (
 
     return (
 
-    <div id="gameover">
+    <div id="gameover" className="container-fluid">
     <img src="https://miro.medium.com/max/1200/1*sgx0PeiAxkB5qUnbI79S-g.png" className="mx-auto d-block"/>
-    <h1 className="auth text-center">USERS ONLY - PLEASE <a href="/login" className="btn btn-danger btn-lg">LOG IN</a> </h1>
-    
+    <h1 className="auth text-center">Error 401 - Unauthorized</h1>
+    <br/>
+    <a href="/login" className="btn btn-light btn-lg d-block mt-10">PRESS HERE TO START A NEW GAME</a> 
+    <br/>
+    <br/>
+    <br/>
     </div> 
     
     )}

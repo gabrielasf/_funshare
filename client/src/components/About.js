@@ -14,6 +14,7 @@ export default class extends Component {
     <div className="navbar-nav">
       <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
       <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
+      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Your Profile</a>
     </div>
   </div>
 </nav>

@@ -1,5 +1,6 @@
 
 /* REGISTER PAGE */
+
 .btn {
   margin-top: 5px;
   margin-left: 5px;
@@ -769,7 +770,7 @@ padding: 1rem 0 0 0;
 
 .bluecard{
 
-  background-image: url(http://7-themes.com/data_images/out/19/6833301-wallpaper-backgrounds.jpg);
+  background-image: url(https://i.pinimg.com/originals/e9/1c/a9/e91ca9efff73c9b8bdfbe9514fb4dade.jpg);
 }
 
 /*AUTHORIZED USERS ONLY*/
@@ -778,3 +779,6 @@ padding: 1rem 0 0 0;
   color: rgba(253, 53, 80, .5);
 }
 
+#gameover{
+  background-color: black;
+}

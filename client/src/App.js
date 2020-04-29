@@ -8,6 +8,8 @@ import MyAccount from "./components/MyAccount.js";
 import Edit from "./components/Edit.js";
 import Event from "./components/Event.js";
 
+//const opencage = require("opencage-api-client");
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 //export default function App() {

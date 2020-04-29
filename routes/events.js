@@ -53,7 +53,6 @@ router.delete("/:id", function (req, res) {
       console.log(err);
     } else {
       console.log("Event deleted!");
-      res.redirect("/events");
     }
   });
 });

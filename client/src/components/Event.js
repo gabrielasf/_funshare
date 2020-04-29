@@ -4,6 +4,7 @@ export default class Event extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // eventId: "",
       events: [],
       gameName: "",
       players: "",
@@ -43,7 +44,7 @@ export default class Event extends Component {
     })
       .then((res) => res.json())
       .then((response) => {
-        this.setState({ events: response });
+        this.setState({ event: response });
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +62,7 @@ export default class Event extends Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(JSON.stringify(error));
       });
   };
 

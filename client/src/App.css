@@ -15,7 +15,7 @@
 body {
   background: #222222;
   background: linear-gradient(to right, rgb(13, 13, 14), rgb(21, 25, 27));
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card-signin {
@@ -294,7 +294,7 @@ body {
   content: '';
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid #2b90d9;
+  border-top: 6px solid #0a0a0a;
   position: absolute;
   bottom: -6px;
   left: 50%;
@@ -317,7 +317,7 @@ body {
 .lined .nav-link.active {
   background: none;
   color: #555;
-  border-color: #2b90d9;
+  border-color: #0d1216;
 }
 
  
@@ -334,3 +334,4 @@ body {
 .text-uppercase {
   letter-spacing: 0.1em;
 } 
+

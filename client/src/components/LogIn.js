@@ -103,8 +103,18 @@ import {
                 type="submit" 
                 onClick={this.props.handleLogin}>Sign in</button>
                 <div className="text-center">
-                  <p className="medium" id="notmember">Not a member?  <a className="medium" href="http://localhost:3000/register">Register here</a></p></div>
+                  <p className="medium" id="notmember">Not a member?    <a className="medium" href="http://localhost:3000/register">Register here</a></p></div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+                   <div className="text-center">
+                    <span><a href="/about">About funshare®</a></span>
+                    <p className="small font-weight-bold">This is a student project that was created at CodeOp, a full stack development bootcamp in Barcelona.</p>
+                    
+                  </div>
               </form>
+              
             </div>
           </div>
         </div>

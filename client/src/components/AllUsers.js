@@ -38,7 +38,7 @@ export default class AllUsers extends Component {
     console.log("event", event);
 
     this.setState({
-      gameCategory: event,
+      gameCategory: event
     });
   };
 

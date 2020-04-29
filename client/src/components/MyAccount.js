@@ -11,7 +11,7 @@ export default class MyAccount extends Component {
       nickname: "",
       email: "",
       avatar: "",
-      mode: "games",
+      mode: "profile"
     };
   }
 

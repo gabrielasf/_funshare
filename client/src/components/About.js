@@ -5,15 +5,15 @@ export default class extends Component {
         return (
             <div>
             <div>
-            <nav className="navbar navbar-expand-lg text-right">
+            <nav className="navbar togcolor navbar-expand-lg text-right">
   <a className="navbar-brand text-right font-weight-bold">funshare®</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="nav-item nav-link active text-right font-weight-bold" href="/">Home <span className="sr-only">(current)</span></a>
-      <a className="nav-item nav-link text-right font-weight-bold" href="/register">Register</a>
+      <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
+      <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
     </div>
   </div>
 </nav>

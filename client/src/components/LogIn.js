@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
 
  class LogIn extends Component {
 
@@ -61,6 +54,7 @@ import {
             <h3 className="login-heading mb-4">Choose a game.</h3>
             <h3 className="login-heading mb-4">Find players.</h3>
               <h3 className="login-heading mb-4">Play the game.</h3>
+              <br/>
               <h3 className="login-heading mb-4">Welcome to funshare®</h3>
               <form onSubmit={this.onSubmit}>
               {this.state.loginState === "correct" && (
@@ -109,8 +103,10 @@ import {
               <br/>
               <br/>
                    <div className="text-center">
-                    <span><a href="/about">About funshare®</a></span>
-                    <p className="small font-weight-bold">This is a student project that was created at CodeOp, a full stack development bootcamp in Barcelona.</p>
+                    <span><a href="/about" className="medium btn m-0 p-0 aboutfunshare"><strong>About funshare®</strong></a></span>
+                    <p className="small font-weight-light aboutfunshare">
+                    © 2020 funshare, Incorporated
+                    </p>
                     
                   </div>
               </form>

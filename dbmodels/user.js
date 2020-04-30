@@ -10,7 +10,8 @@ const UserSchema = new Schema({
   myGame: [{
     myGameName: String,  
     myGameLanguage: String,
-    myGamePlayers: Number,
+    myGamePlayersMin: Number,
+    myGamePlayersMax: Number,
     myGameCategory: String
   }],
   email: String,

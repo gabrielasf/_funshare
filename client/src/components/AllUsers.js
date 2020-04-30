@@ -117,39 +117,84 @@ export default class AllUsers extends Component {
                 return (
                   <div key={index} className="col-4">
                     <div className=" userDisplay shadow rounded border">
+
+                    {user.avatar !== "" &&
+                      <div>
+                        <span className="label">Avatar</span>
+                        {user.avatar}
+                      </div>}
+                      
+                      {user.name !== "" &&
                       <div>
                         <span className="label">Name: </span>
                         {user.name}
-                      </div>
+                      </div>}
+
+                      {user.nickname !== "" &&
+                      <div>
+                        <span className="label">Nickname: </span>
+                        {user.nickname}
+                      </div>}
+
+                      {user.city !== "" &&
                       <div>
                         <span className="label">City: </span>
                         {user.city}
-                      </div>
+                      </div>}
+
+                      {user.aboutMe !== "" &&
+                      <div>
+                        <span className="label">About me: </span>
+                        {user.aboutMe}
+                      </div>}
+
+                      {user.email !== "" &&
                       <div>
                         <span className="label">Email: </span>
                         {user.email}
-                      </div>
+                      </div>}
+
+                      {user.availability !== "" &&
+                      <div>
+                        <span className="label">Availability: </span>
+                        {user.availability}
+                      </div>}
+
                       <div>
                         <span>My games: </span>
                         {user.myGame.map((game, index) => {
                           return (
                           <div className="mb-4" key={index}>
+
+                            {game.myGameName !== "" &&
                             <div>
                               <span>Game's Name: </span>
                               {game.myGameName}
-                            </div>
+                            </div>}
+
+                            {game.myGameLanguage !== "" &&
                             <div>
                               <span>Game's Language: </span>
                               {game.myGameLanguage}
-                            </div>
+                            </div>}
+
+                            {game.myGamePlayersMin !== undefined &&
                             <div>
-                              <span>Players: </span>
-                              {game.myGamePlayers}
-                            </div>
+                              <span>Minimum players: </span>
+                              {game.myGamePlayersMin}
+                            </div>}
+
+                            {game.myGamePlayersMax !== undefined &&
+                            <div>
+                              <span>Maximum players: </span>
+                              {game.myGamePlayersMax}
+                            </div>}
+
+                            {game.myGameCategory !== "" &&
                             <div>
                               <span>Game's Category: </span>
                               {game.myGameCategory}
-                            </div>
+                            </div>}
                           </div>
                           )
                         })}

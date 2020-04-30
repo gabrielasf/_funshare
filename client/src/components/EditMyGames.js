@@ -7,7 +7,8 @@ export default class EditMyGames extends Component {
       allGames: [],
       myGameName: "",
       myGameLanguage: "",
-      myGamePlayers: undefined,
+      myGamePlayersMin: undefined,
+      myGamePlayersMax: undefined,
       myGameCategory: "",
     };
   }
@@ -48,8 +49,11 @@ export default class EditMyGames extends Component {
     if (this.state.myGameLanguage !== "") {
       newGame["myGameLanguage"] = this.state.myGameLanguage;
     }
-    if (this.state.myGamePlayers !== undefined) {
-      newGame["myGamePlayers"] = this.state.myGamePlayers;
+    if (this.state.myGamePlayersMin !== undefined) {
+      newGame["myGamePlayersMin"] = this.state.myGamePlayersMin;
+    }
+    if (this.state.myGamePlayersMax !== undefined) {
+      newGame["myGamePlayersMax"] = this.state.myGamePlayersMax;
     }
     if (this.state.myGameCategory !== "") {
       newGame["myGameCategory"] = this.state.myGameCategory;
@@ -84,7 +88,7 @@ export default class EditMyGames extends Component {
       });
   };
 
-  
+
   deleteGame = (index) => {
     // remove game by index from allGames
     this.state.allGames.splice(index, 1);
@@ -139,12 +143,21 @@ export default class EditMyGames extends Component {
             />
           </div>
           <div>
-            Game's Players:
+            Minimum players:
             <input
               onChange={this.handleInputChange}
               type="text"
-              name="myGamePlayers"
-              value={this.state.myGamePlayers}
+              name="myGamePlayersMin"
+              value={this.state.myGamePlayersMin}
+            />
+          </div>
+          <div>
+            Maximum players:
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="myGamePlayersMax"
+              value={this.state.myGamePlayersMax}
             />
           </div>
           <div>
@@ -184,8 +197,12 @@ export default class EditMyGames extends Component {
                   {game.myGameLanguage}
                 </div>
                 <div>
-                  <span>Players: </span>
-                  {game.myGamePlayers}
+                  <span>Minimum players: </span>
+                  {game.myGamePlayersMin}
+                </div>
+                <div>
+                  <span>Maximum players: </span>
+                  {game.myGamePlayersMax}
                 </div>
                 <div>
                   <span>Game's Category: </span>

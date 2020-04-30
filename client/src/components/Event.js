@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import MapApp from "./MapApp";
 
 export default class Event extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eventId: "",
       events: [],
       gameName: "",
       players: "",
-      city: "",
+      location: "",
       date: "",
       email: "",
       description: "",
@@ -27,7 +27,7 @@ export default class Event extends Component {
       });
   };
   addNewEvent = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     fetch("/events", {
       method: "POST",
       headers: {
@@ -36,7 +36,7 @@ export default class Event extends Component {
       body: JSON.stringify({
         gameName: this.state.gameName,
         players: this.state.players,
-        city: this.state.city,
+        location: this.state.location,
         date: this.state.date,
         email: this.state.email,
         description: this.state.description,
@@ -67,13 +67,14 @@ export default class Event extends Component {
   };
 
   handleChange = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
       [name]: value,
     });
   };
+
   render() {
     return (
       <div>
@@ -99,14 +100,24 @@ export default class Event extends Component {
               value={this.state.players}
             />
             <br />
+            <label>Location:</label>
+            <br />
+            <input
+              onChange={this.handleChange}
+              type="text"
+              id="location"
+              name="location"
+              value={this.state.location}
+            />
+            <br />
             <label>Date:</label>
             <br />
             <input
               onChange={this.handleChange}
               type="text"
-              id="Date"
-              name="Date"
-              value={this.state.Date}
+              id="date"
+              name="date"
+              value={this.state.date}
             />
             <br />
             <label>Email:</label>
@@ -149,8 +160,8 @@ export default class Event extends Component {
                   {event.players}
                 </div>
                 <div>
-                  <span className="label">City: </span>
-                  {event.city}
+                  <span className="label">Location: </span>
+                  {event.location}
                 </div>
                 <div>
                   <span className="label">Date: </span>
@@ -174,6 +185,7 @@ export default class Event extends Component {
             );
           })}
         </div>
+        <MapApp />
       </div>
     );
   }

@@ -4,3 +4,8 @@
   margin-right: 5px;
   margin-bottom: 15px;
 }
+
+.leaflet-container {
+  width: 50%;
+  height: 50vh;
+}

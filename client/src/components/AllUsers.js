@@ -308,8 +308,9 @@
 
 import React, { Component } from "react";
 import MultiSelect from "react-multi-select-component";
+import { withRouter } from 'react-router';
 
-export default class AllUsers extends Component {
+class AllUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -351,6 +352,12 @@ export default class AllUsers extends Component {
     });
   };
 
+  logout = () => {
+            localStorage.removeItem('jwtToken');
+            //window.location.reload();
+            this.props.history.push('/login');
+          }
+
   /*searchByCityAndCategory = event => {
     event.preventDefault();
     fetch(`/users/cityAndCategory/${this.state.cityToFilter}/${this.state.gameCategory}`)
@@ -388,10 +395,12 @@ export default class AllUsers extends Component {
 
 
   render() {
+    
+if(localStorage.getItem('jwtToken')){
     return (
-      <div>
+      <div className="container-fluid allusers">
         <h1>ALL USERS</h1>
-
+        <button className="btn btn-primary" onClick={this.logout}>Logout</button> 
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
           <MultiSelect
@@ -514,8 +523,25 @@ export default class AllUsers extends Component {
           </div>
         </div>
       </div>
-    );
-  }
+
+)} else {
+
+    return (
+
+        <div id="gameover" className="container-fluid">
+            <img src="https://miro.medium.com/max/1200/1*sgx0PeiAxkB5qUnbI79S-g.png" className="mx-auto d-block"/>
+            <h1 className="auth text-center">Error 401 - Unauthorized</h1>
+            <br/>
+            <a href="/login" className="btn btn-light btn-lg d-block mt-10">PRESS HERE TO START A NEW GAME</a> 
+            <br/>
+            <br/>
+            <br/>
+        </div> 
+        
+    )}
 }
+}
+ 
+    
 
 export default withRouter(AllUsers);

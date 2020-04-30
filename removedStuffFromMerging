@@ -18,3 +18,12 @@
       }
     },
 
+ "react-multi-select-component": {
+      "version": "2.0.4",
+      "resolved": "https://registry.npmjs.org/react-multi-select-component/-/react-multi-select-component-2.0.4.tgz",
+      "integrity": "sha512-bZK3xoDBndjK08BdXWh2NkYCo64gf8hEYeo7E42m/t4VlT5Q9bjmno6bp3x9ZonbhE6BCVG4DyExR/EgRq5o9w==",
+      "requires": {
+        "@rooks/use-outside-click": "^3.6.0",
+        "goober": "^1.7.1"
+      }
+    },

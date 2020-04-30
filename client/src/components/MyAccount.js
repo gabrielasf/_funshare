@@ -47,9 +47,6 @@ export default class MyAccount extends Component {
   seeGames = () => {
     this.setState({mode: "games"})
   }
-
-  addNewGame = () => {};
-
   
   render() {
       return (

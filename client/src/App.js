@@ -52,7 +52,7 @@ export default class App extends Component {
               <About />
             </Route>
             <Route path="/allusers">
-              <AllUsers />
+              <AllUsers userId={this.state.userId}/>
             </Route>
             <Route path="/register">
               <Register />

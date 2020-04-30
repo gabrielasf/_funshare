@@ -39,6 +39,8 @@ export default class EditMyGames extends Component {
 
   addNewGame = (event) => {
     event.preventDefault();
+
+    //create new game object
     let newGame = {};
     if (this.state.myGameName !== "") {
       newGame["myGameName"] = this.state.myGameName;
@@ -53,6 +55,7 @@ export default class EditMyGames extends Component {
       newGame["myGameCategory"] = this.state.myGameCategory;
     }
 
+    //update allGames array with new game
     let updatedGames = [...this.state.allGames, newGame];
 
     this.setState({
@@ -74,6 +77,37 @@ export default class EditMyGames extends Component {
           console.log(response.error);
         } else {
           console.log("New game added!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  
+  deleteGame = (index) => {
+    // remove game by index from allGames
+    this.state.allGames.splice(index, 1);
+
+    this.setState({
+      allGames: this.state.allGames,
+    });
+
+    fetch(`/users/${this.props.userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        myGame: this.state.allGames,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.error !== null) {
+          console.log(response.error);
+        } else {
+          console.log("Game removed!");
         }
       })
       .catch((error) => {
@@ -157,6 +191,13 @@ export default class EditMyGames extends Component {
                   <span>Game's Category: </span>
                   {game.myGameCategory}
                 </div>
+                <button
+                  onClick={() => {
+                    this.deleteGame(index);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}

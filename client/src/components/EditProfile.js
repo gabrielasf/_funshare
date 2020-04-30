@@ -15,7 +15,9 @@ export default class EditProfile extends Component {
       aboutMe: "",
       events: "",
       availability: "",
-      mode: "profile",
+
+      //to toggle message to user
+      updateProfileState: "begin"
     };
   }
 
@@ -56,6 +58,7 @@ export default class EditProfile extends Component {
 
   saveChanges = (event) => {
     event.preventDefault();
+
     fetch(`/users/${this.props.userId}`, {
       method: "PATCH",
       headers: {
@@ -76,6 +79,12 @@ export default class EditProfile extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
+
+        //to toggle message for user if update succed
+        this.setState({
+          updateProfileState: "success"
+        })
+
         if (response.error !== null) {
           console.log(response.error);
         } else {
@@ -84,9 +93,16 @@ export default class EditProfile extends Component {
       })
       .catch((error) => {
         console.error("Error:", error);
+
+        //to toggle message for user if update didn't happend
+        this.setState({
+          updateProfileState: "error"
+        })
       });
   };
 
+
+  //styling for multiple inputs
   formGroup = (label, name, value) => {
     return (
       <div className="form-group">
@@ -167,7 +183,15 @@ export default class EditProfile extends Component {
                 value="Update Profile"
               />
             </div>
-          </div>
+            {this.state.updateProfileState === "success" && (
+            <h5 className="text-success">Your profile is updated!</h5>
+            )}
+
+            {this.state.updateProfileState === "error" && (
+            <h5 className="text-danger">Sorry there was an error, please try again!</h5>
+            )}
+
+            </div>
         </form>
       </div>
     );

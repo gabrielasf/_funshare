@@ -117,6 +117,7 @@ router.post("/", function (req, res) {
 });
 
 
+
 //DELETE user by id
 router.delete("/:id", function (req, res) {
   User.remove({ _id: req.params.id }, function (err) {
@@ -129,14 +130,8 @@ router.delete("/:id", function (req, res) {
   });
 });
 
-// //update game by name
-// router.patch("/:gamesName", function(req, res){
-//   let newObj = {};
 
-//   }
-// )
-
-//UPDATE user by id, ADD new game
+//UPDATE user by id, ADD new game, DELETE game
 router.patch("/:id", function (req, res) {
   let newObj = {};
   console.log("body of the request", req.body)

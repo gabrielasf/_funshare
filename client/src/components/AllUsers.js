@@ -43,14 +43,14 @@ export default class AllUsers extends Component {
     });
   };
 
-  searchByCityAndCategory = event => {
+  /*searchByCityAndCategory = event => {
     event.preventDefault();
     fetch(`/users/cityAndCategory/${this.state.cityToFilter}/${this.state.gameCategory}`)
     .then((response) => response.json())
     .then((response) => {
       this.setState({ users: response})
     });
-  };
+  }; */
 
 
   searchByMultiple = (event) => {

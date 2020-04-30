@@ -19,6 +19,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.3",
     "opencage-api-client": "^0.7.1",
-    "react-leaflet": "^2.6.3"
+    "react-leaflet": "^2.6.3",
+    "react-multi-select-component": "^2.0.4"
   }
 }

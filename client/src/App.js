@@ -5,7 +5,6 @@ import Home from "./components/Home.js";
 import Register from "./components/Register.js";
 import About from "./components/About.js";
 import MyAccount from "./components/MyAccount.js";
-import Edit from "./components/Edit.js";
 import Event from "./components/Event.js";
 import MapApp from "./components/MapApp.js";
 
@@ -18,7 +17,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       anything: "",
-      userId: "5ea42927612b0a45c8ceac26",
+      userId: "5ea86c8c36688e09e662df5c",
       allUsers: [],
     };
   }
@@ -54,16 +53,13 @@ export default class App extends Component {
               <About />
             </Route>
             <Route path="/allusers">
-              <AllUsers />
+              <AllUsers userId={this.state.userId}/>
             </Route>
             <Route path="/register">
               <Register />
             </Route>
             <Route path="/myaccount">
-              <MyAccount />
-            </Route>
-            <Route path="/edit">
-              <Edit userId={this.state.userId} />
+              <MyAccount userId={this.state.userId} />
             </Route>
             <Route path="/event">
               <Event />

@@ -1,0 +1,225 @@
+import React, { Component } from "react";
+
+export default class EditMyGames extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allGames: [],
+      myGameName: "",
+      myGameLanguage: "",
+      myGamePlayersMin: undefined,
+      myGamePlayersMax: undefined,
+      myGameCategory: "",
+    };
+  }
+
+  componentDidMount() {
+    this.getUserById(this.props.userId);
+  }
+
+  getUserById = (id) => {
+    fetch(`/users/${this.props.userId}`)
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("response in gameEdit", response);
+        this.setState({
+          allGames: response.myGame,
+        });
+      });
+  };
+
+  handleInputChange = (event) => {
+    event.preventDefault();
+    const value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  addNewGame = (event) => {
+    event.preventDefault();
+
+    //create new game object
+    let newGame = {};
+    if (this.state.myGameName !== "") {
+      newGame["myGameName"] = this.state.myGameName;
+    }
+    if (this.state.myGameLanguage !== "") {
+      newGame["myGameLanguage"] = this.state.myGameLanguage;
+    }
+    if (this.state.myGamePlayersMin !== undefined) {
+      newGame["myGamePlayersMin"] = this.state.myGamePlayersMin;
+    }
+    if (this.state.myGamePlayersMax !== undefined) {
+      newGame["myGamePlayersMax"] = this.state.myGamePlayersMax;
+    }
+    if (this.state.myGameCategory !== "") {
+      newGame["myGameCategory"] = this.state.myGameCategory;
+    }
+
+    //update allGames array with new game
+    let updatedGames = [...this.state.allGames, newGame];
+
+    this.setState({
+      allGames: updatedGames,
+    });
+
+    fetch(`/users/${this.props.userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        myGame: updatedGames,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.error !== null) {
+          console.log(response.error);
+        } else {
+          console.log("New game added!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+
+  deleteGame = (index) => {
+    // remove game by index from allGames
+    this.state.allGames.splice(index, 1);
+
+    this.setState({
+      allGames: this.state.allGames,
+    });
+
+    fetch(`/users/${this.props.userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        myGame: this.state.allGames,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.error !== null) {
+          console.log(response.error);
+        } else {
+          console.log("Game removed!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <h2 className="title">My games</h2>
+        <form onSubmit={this.addNewGame}>
+          <div>
+            Game's Name:
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="myGameName"
+              value={this.state.myGameName}
+            />
+          </div>
+          <div>
+            Game's Language:
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="myGameLanguage"
+              value={this.state.myGameLanguage}
+            />
+          </div>
+          <div>
+            Minimum players:
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="myGamePlayersMin"
+              value={this.state.myGamePlayersMin}
+            />
+          </div>
+          <div>
+            Maximum players:
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="myGamePlayersMax"
+              value={this.state.myGamePlayersMax}
+            />
+          </div>
+          <div>
+            Game's Category:
+            <select
+              className="custom-select"
+              onChange={this.handleInputChange}
+              name="myGameCategory"
+            >
+              <option selected>Choose...</option>
+              <option value="rollAndMove">Roll and Move</option>
+              <option value="workerPlacement">Worker Placement</option>
+              <option value="cooperative">Cooperative </option>
+              <option value="deckBuilding">Deck-Building </option>
+              <option value="areaControl">Area Control </option>
+              <option value="secretIdentity">Secret Identity </option>
+              <option value="legacy">Legacy </option>
+              <option value="party">Party </option>
+              <option value="puzzle">Puzzle </option>
+              <option value="combat">Combat </option>
+              <option value="jigsaw">Jigsaw </option>
+            </select>
+          </div>
+          <input type="submit" value="Add new game" />
+        </form>
+        <div>
+          <span>My games: </span>
+          {this.state.allGames.map((game, index) => {
+            return (
+              <div className="mb-4" key={index}>
+                <div>
+                  <span>Game's Name: </span>
+                  {game.myGameName}
+                </div>
+                <div>
+                  <span>Game's Language: </span>
+                  {game.myGameLanguage}
+                </div>
+                <div>
+                  <span>Minimum players: </span>
+                  {game.myGamePlayersMin}
+                </div>
+                <div>
+                  <span>Maximum players: </span>
+                  {game.myGamePlayersMax}
+                </div>
+                <div>
+                  <span>Game's Category: </span>
+                  {game.myGameCategory}
+                </div>
+                <button
+                  onClick={() => {
+                    this.deleteGame(index);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+}

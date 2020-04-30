@@ -1,15 +1,11 @@
 import React, { Component }  from 'react';
 import './App.css';
-
 import AllUsers from './components/AllUsers.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js';
 import About from './components/About.js';
 import MyAccount from './components/MyAccount.js';
 import LogIn from './components/LogIn';
-import Edit from './components/Edit';
-
-
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -21,6 +17,7 @@ export default class App extends Component {
     this.state = {
       userId: "5ea194b2cf7386319ec4727b",
       users: [],
+      allUsers: []
     };
   }
 
@@ -64,25 +61,22 @@ export default class App extends Component {
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/allusers">
-            <AllUsers />
-          </Route>
-          <Route path="/login" component={LogIn}>
+        <Switch>    
+       <Route path="/login" component={LogIn}>
             <LogIn />
           </Route>
           <Route path="/register" component={Register}>
             <Register />
           </Route>
-          <Route path="/edit">
-              <Edit userId={this.state.userId} />
+            <Route path="/about">
+              <About />
             </Route>
-          <Route path="/myaccount">
-            <MyAccount />
-          </Route>
+            <Route path="/allusers">
+              <AllUsers userId={this.state.userId}/>
+            </Route>
+            <Route path="/myaccount">
+              <MyAccount userId={this.state.userId} />
+            </Route>
           <Route path="/">
             <Home />
           </Route>

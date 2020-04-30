@@ -6,31 +6,32 @@ var bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
   name: String,
-  language: String,
   city: String,
   address: String,
-  myGame: String,
-  myGameLanguage: String,
-  myGamePlayers: Number,
-  myGameCategory: String,
+  myGame: [{
+    myGameName: String,  
+    myGameLanguage: String,
+    myGamePlayersMin: Number,
+    myGamePlayersMax: Number,
+    myGameCategory: String
+  }],
   username: {
     type: String,
     unique: true,
     required: true
   },
+  email: String,
   nickname: String,
   password: {
     type: String,
     required: true
 },
   avatar: String,
-  host: Boolean,
-  guest: Boolean,
   aboutMe: String,
   events: String,
   availability: String,
 
-  location: {
+  /*location: {
     type: {
       type: String,
       enum: ["Point"],
@@ -40,7 +41,7 @@ const UserSchema = new Schema({
       type: [Number], // Array of arrays of arrays of numbers
       required: true,
     },
-  },
+  }, */
 });
 
 //check and hash password

@@ -7,19 +7,33 @@
     "migrate": "node model/database.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
     "leaflet": "^1.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.3",
     "opencage-api-client": "^0.7.1",
     "react-leaflet": "^2.6.3",
-    "react-multi-select-component": "^2.0.4"
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "react-dom": "^16.13.1",
+    "react-multi-select-component": "^2.0.4",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "react-use-auth": "^0.6.1"
   }
 }

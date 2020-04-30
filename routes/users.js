@@ -1,15 +1,33 @@
 var express = require("express");
 var router = express.Router();
-var User = require("../dbmodels/user");
+var User = require('../dbmodels/user');
+var passport = require('passport');
+require('../config/passport')(passport);
 
-const bodyParser = require("body-parser");
-router.use(bodyParser.json()); //to support JSON-encoded body
-router.use(
-  bodyParser.urlencoded({
-    //to support URL-encoded body
-    extended: true,
-  })
-);
+const bodyParser = require("body-parser")  
+router.use(bodyParser.json());        //to support JSON-encoded body
+router.use(bodyParser.urlencoded({    //to support URL-encoded body
+  extended : true
+}));
+
+
+//get all users
+// router.get("/", passport.authenticate('jwt', { session: false}), function (req, res, next) {
+//   var token = getToken(req.headers);
+//   if (token) {
+
+//GET all users
+// router.get("/", function (req, res, next) {
+//   User.find({}, function (err, result) {
+//      console.log("we connected");
+//       if (err) return next(err);
+//       console.log(err);
+//       res.json(result);
+//   });
+//   //   } else {
+//   //     return res.status(403).send({success: false, msg: 'Unauthorized.'});
+//   // }
+// });
 
 //GET all users
 router.get("/", function (req, res, next) {
@@ -23,6 +41,7 @@ router.get("/", function (req, res, next) {
     }
   });
 });
+
 
 //GET user by id
 router.get("/:id", function (req, res, next) {
@@ -109,11 +128,13 @@ console.log("to jest obiekt", obj);
 
 //ADD new user
 router.post("/", function (req, res) {
-    let user = new User(req.body);
+  
+  let user = new User(req.body);
   user.save(function (err, user) {
     res.json(user);
     console.log(err);
   });
+
 });
 
 
@@ -151,6 +172,9 @@ router.patch("/:id", function (req, res) {
   if (req.body.email !== undefined) {
     newObj["email"] = req.body.email;
   }
+  if (req.body.username !== undefined) {  //WILL BE THE NEW EMAIL :)/ SIGN: GABI
+    newObj["username"] = req.body.username;
+  }
   if (req.body.nickname !== undefined) {
     newObj["nickname"] = req.body.nickname;
   }
@@ -187,6 +211,21 @@ router.patch("/:id", function (req, res) {
       }
     }
   );
+
+  getToken = function (headers) {
+    if (headers && headers.authorization) {
+      var parted = headers.authorization.split(' ');
+      if (parted.length === 2) {
+        return parted[1];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  };
+
+
 });
 
 module.exports = router;

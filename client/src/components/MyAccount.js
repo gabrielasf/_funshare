@@ -49,9 +49,12 @@ export default class MyAccount extends Component {
   }
   
   render() {
+
+    if(localStorage.getItem('jwtToken')){
+
       return (
         <div>
-          <div className="container">
+          <div className="container-fluid myaccount">
             <div className="view-account">
               <section className="module">
                 <div className="module-inner">
@@ -98,6 +101,21 @@ export default class MyAccount extends Component {
             </div>
           </div>
         </div>
-      );
+      
+      )}else {
+
+        return (
+    
+            <div id="gameover" className="container-fluid">
+                <img src="https://miro.medium.com/max/1200/1*sgx0PeiAxkB5qUnbI79S-g.png" className="mx-auto d-block"/>
+                <h1 className="auth text-center">Error 401 - Unauthorized</h1>
+                <br/>
+                <a href="/login" className="btn btn-light btn-lg d-block mt-10">PRESS HERE TO START A NEW GAME</a> 
+                <br/>
+                <br/>
+                <br/>
+            </div>             
+        )}
+
   }
 }

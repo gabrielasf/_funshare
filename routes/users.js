@@ -11,7 +11,7 @@ router.use(
   })
 );
 
-//get all users
+//GET all users
 router.get("/", function (req, res, next) {
   User.find({}, function (err, result) {
     console.log(result);
@@ -24,7 +24,7 @@ router.get("/", function (req, res, next) {
   });
 });
 
-//get user by id
+//GET user by id
 router.get("/:id", function (req, res, next) {
   User.findOne({ _id: req.params.id }, function (err, result) {
     console.log(result);
@@ -37,12 +37,9 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
-//get user by category
-router.get("/category/:myGameCategory", function (req, res, next) {
-  User.find({ myGameCategory: req.params.myGameCategory }, function (
-    err,
-    result
-  ) {
+//GET user by category
+router.get('/category/:myGameCategory', function(req, res, next) {
+  User.find({"myGameCategory": req.params.myGameCategory}, function(err, result) {
     //console.log(result);
     console.log("we connected");
     if (err) {
@@ -53,9 +50,9 @@ router.get("/category/:myGameCategory", function (req, res, next) {
   });
 });
 
-//get user by city
-router.get("/city/:city", function (req, res, next) {
-  User.find({ city: req.params.city }, function (err, result) {
+//GET user by city
+router.get('/city/:city', function(req, res, next) {
+  User.find({"city": req.params.city}, function(err, result) {
     //console.log(result);
     console.log("we connected");
     if (err) {
@@ -66,8 +63,34 @@ router.get("/city/:city", function (req, res, next) {
   });
 });
 
+//GET user by multiple filters
+router.post('/filteredSearch', function(req, res){
+  //console.log("body request", req.body);
+let obj = {};
+if (req.body.cityToFilter !== "") {
+   obj["city"] = req.body.cityToFilter;
+}
+if (req.body.gameCategory.length !== 0) {
+  obj["myGame.myGameCategory"] = req.body.gameCategory;
+}
+if (req.body.gameLanguage !== "") {
+  obj["myGame.myGameLanguage"] = req.body.gameLanguage;
+}
+
+console.log("to jest obiekt", obj);
+
+  User.find(obj, function(err, result) {
+    console.log(result);
+    console.log("we connected");
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+})
 //add new user GEOCODE
-router.post("/", function (req, res) {
+/*router.post("/", function (req, res) {
   const geoCoord = {
     type: "Point",
     coordinates: [41.390205, 2.154007],
@@ -81,10 +104,10 @@ router.post("/", function (req, res) {
     res.json(user);
     console.log(err);
   });
-});
+}); */
 
-/*
-//add new user
+
+//ADD new user
 router.post("/", function (req, res) {
     let user = new User(req.body);
   user.save(function (err, user) {
@@ -93,9 +116,9 @@ router.post("/", function (req, res) {
   });
 });
 
-*/
 
-//delete by id
+
+//DELETE user by id
 router.delete("/:id", function (req, res) {
   User.remove({ _id: req.params.id }, function (err) {
     if (err) {
@@ -107,15 +130,14 @@ router.delete("/:id", function (req, res) {
   });
 });
 
-//update user by id
+
+//UPDATE user by id, ADD new game, DELETE game
 router.patch("/:id", function (req, res) {
   let newObj = {};
+  console.log("body of the request", req.body)
 
   if (req.body.name !== undefined) {
     newObj["name"] = req.body.name;
-  }
-  if (req.body.language !== undefined) {
-    newObj["language"] = req.body.language;
   }
   if (req.body.address !== undefined) {
     newObj["address"] = req.body.address;
@@ -125,15 +147,6 @@ router.patch("/:id", function (req, res) {
   }
   if (req.body.myGame !== undefined) {
     newObj["myGame"] = req.body.myGame;
-  }
-  if (req.body.myGameLanguage !== undefined) {
-    newObj["myGameLanguage"] = req.body.myGameLanguage;
-  }
-  if (req.body.myGamePlayers !== undefined) {
-    newObj["myGamePlayers"] = req.body.myGamePlayers;
-  }
-  if (req.body.myGameCategory !== undefined) {
-    newObj["myGameCategory"] = req.body.myGameCategory;
   }
   if (req.body.email !== undefined) {
     newObj["email"] = req.body.email;
@@ -146,12 +159,6 @@ router.patch("/:id", function (req, res) {
   }
   if (req.body.avatar !== undefined) {
     newObj["avatar"] = req.body.avatar;
-  }
-  if (req.body.host !== undefined) {
-    newObj["host"] = req.body.host;
-  }
-  if (req.body.guest !== undefined) {
-    newObj["guest"] = req.body.guest;
   }
   if (req.body.aboutMe !== undefined) {
     newObj["aboutMe"] = req.body.aboutMe;

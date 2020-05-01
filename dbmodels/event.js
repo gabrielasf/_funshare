@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const EventSchema = new Schema({
   gameName: String,
   players: String,
-  city: String,
+  location: String,
   date: String,
   email: String,
   description: String,

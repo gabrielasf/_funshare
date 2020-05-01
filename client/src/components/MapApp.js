@@ -12,12 +12,10 @@ class MapApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //city: "",
-      //lat: 41.390205,
-      //lng: 2.154007,
-      //zoom: 13,
+      //location: "",
       markers: [],
-      input: "",
+      input: [],
+      //input: "",
     };
   }
 
@@ -38,7 +36,7 @@ class MapApp extends Component {
   // Adds marker to map and flies to it with an animation
   addAddress = () => {
     opencage
-      .geocode({ q: this.state.input, key: OCD_API_KEY })
+      .geocode({ q: this.props.eventLocation, key: OCD_API_KEY })
       .then((data) => {
         // Found at least one result
         if (data.results.length > 0) {
@@ -65,7 +63,7 @@ class MapApp extends Component {
           ref="map"
           center={[41.38879, 2.15899]}
           onClick={this.addMarker}
-          zoom={13}
+          zoom={2}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -74,7 +72,11 @@ class MapApp extends Component {
           {this.state.markers.map((position, idx) => (
             <Marker key={`marker-${idx}`} position={position}>
               <Popup>
-                <span>Hello!</span>
+                <span>
+                  funshare
+                  <br />
+                  {this.props.eventLocation}
+                </span>
               </Popup>
             </Marker>
           ))}
@@ -85,7 +87,7 @@ class MapApp extends Component {
             <input
               className="form-control flex-primary-1"
               onChange={(e) => this.updateInput(e)}
-              value={this.state.input}
+              value={this.props.eventLocation}
             />
 
             <button
@@ -102,11 +104,3 @@ class MapApp extends Component {
 }
 
 export default MapApp;
-
-/*<button
-              className="btn btn-primary ml-2"
-              onClick={(e) => this.addAddress()}
-            >
-              Submit your address
-            </button>
-            */

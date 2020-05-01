@@ -7,19 +7,17 @@ import About from "./components/About.js";
 import MyAccount from "./components/MyAccount.js";
 import Event from "./components/Event.js";
 import MapApp from "./components/MapApp.js";
-import LogIn from './components/LogIn';
+import LogIn from "./components/LogIn";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "5ea9e5d27ed0f732d907eda9",
+      userId: "5eab09e39927cb7ce418243f",
       users: [],
-      allUsers: []
+      allUsers: [],
     };
   }
 
@@ -29,25 +27,25 @@ export default class App extends Component {
     });
   };
 
-//  componentDidMount() {
-//   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-//   axios.get('/users')
-//     .then(res => {
-//       console.log(this.state.users);
-//       this.setState({ users: res.data });
-//     })
-//     .catch((error) => {
-//       if(error.response === 401) {
-//         this.props.history.push("/login");
-//       }
-//     });
-// }
+  //  componentDidMount() {
+  //   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
+  //   axios.get('/users')
+  //     .then(res => {
+  //       console.log(this.state.users);
+  //       this.setState({ users: res.data });
+  //     })
+  //     .catch((error) => {
+  //       if(error.response === 401) {
+  //         this.props.history.push("/login");
+  //       }
+  //     });
+  // }
 
   render() {
-  return (
-    <Router>
-      <div>
-        {/* <nav>
+    return (
+      <Router>
+        <div>
+          {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -63,18 +61,18 @@ export default class App extends Component {
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>    
-       <Route path="/login" component={LogIn}>
-            <LogIn />
-          </Route>
-          <Route path="/register" component={Register}>
-            <Register />
-          </Route>
+          <Switch>
+            <Route path="/login" component={LogIn}>
+              <LogIn />
+            </Route>
+            <Route path="/register" component={Register}>
+              <Register />
+            </Route>
             <Route path="/about">
               <About />
             </Route>
             <Route path="/allusers">
-              <AllUsers userId={this.state.userId}/>
+              <AllUsers userId={this.state.userId} />
             </Route>
             <Route path="/myaccount">
               <MyAccount userId={this.state.userId} />

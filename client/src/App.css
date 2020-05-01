@@ -8,6 +8,10 @@
 */
 
 
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
 .btn {
   margin-top: 5px;
   margin-left: 5px;
@@ -349,6 +353,7 @@ body {
   background: -webkit-linear-gradient(to right, #111518, #2f302f);
   background: linear-gradient(to right, #0d1013, #363636);
   min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 .nav-pills .nav-link {
@@ -385,6 +390,7 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 .userDisplay {
@@ -393,6 +399,13 @@ body {
   color: whitesmoke;
   border-radius: 15px 50px 30px;
 
+}
+
+/*ALL USERS CARDS*/
+
+.allusers {
+
+  background-color: #eaf0ec
 }
 
 .collapse{
@@ -407,7 +420,7 @@ body {
  
 .cardusers {
 	background-image: linear-gradient(to right top, #2d0036, #4f015b, #730283, #9a02ac, #C400D7);
-	font-family: Montserrat, sans-serif;
+	font-family: 'Roboto', sans-serif;
 	
 	display: flex;
 	align-items: center;
@@ -471,7 +484,7 @@ button.primary {
 	border: 1px solid #C400D7;
 	border-radius: 3px;
 	color: #fff;
-	font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	padding: 10px 25px;
 }
@@ -503,9 +516,3 @@ button.primary.ghost {
 	padding: 7px;
 }
 
-/*ALL USERS CARDS*/
-
-.allusers {
-
-  background-color: #eaf0ec
-}

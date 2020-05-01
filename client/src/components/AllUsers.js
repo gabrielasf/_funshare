@@ -473,7 +473,7 @@ if(localStorage.getItem('jwtToken')){
               {this.state.users.map((user, index) => {
                 return (
                   <div key={index} className="col-4">
-                    <div className="userDisplay cardsss shadow border">
+                    <div className="userDisplay shadow border">
 
                     {/* {user.avatar !== "" &&
                       <div>
@@ -483,17 +483,17 @@ if(localStorage.getItem('jwtToken')){
                       
                       {user.nickname !== "" &&
                       <div>
-                        <h2 className="card-header text-center font-weight-bold bg-info">{user.nickname}</h2>
+                        <h2 className="card-header text-center bg-info">{user.nickname}</h2>
                       </div>}
                       <br/>
                       {user.name !== "" &&
                       <div>
-                        <p className="text-center">I'm <h5 className="d-inline font-weight-bold">{user.name}</h5> </p>
+                        <p className="text-center">I'm <h5 className="d-inline ">{user.name}</h5> </p>
                       </div>}
 
                       {user.city !== "" &&
                       <div>
-                        <p className="text-center">from <h5 className="d-inline font-weight-bold">{user.city}</h5> </p>
+                        <p className="text-center">from <h5 className="d-inline ">{user.city}</h5> </p>
                       </div>}
 
                       {user.aboutMe !== "" &&

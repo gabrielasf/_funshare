@@ -73,7 +73,7 @@ class MapApp extends Component {
             <Marker key={`marker-${idx}`} position={position}>
               <Popup>
                 <span>
-                  funshare
+                  funshare®
                   <br />
                   {this.props.eventLocation}
                 </span>

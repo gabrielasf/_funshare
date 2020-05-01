@@ -225,7 +225,58 @@ export default class Event extends Component {
                 <div className="row">
                   {this.state.events.map((event, index) => {
                     return (
-                      <div key={index} className="col-4">
+                      <div key={index}>
+                        <div class="test">
+                          <div class="card-image-test"></div>
+                          <div class="card-text-test">
+                            <span className="label"></span>
+                            <h3>{event.gameName}</h3>
+                            <span className="label"></span>
+                            {event.description}
+                            <span className="labelLocation">
+                              <h4>{event.location}</h4>
+                            </span>
+                            <span className="label"> </span>
+                            {event.email}
+                          </div>
+                          <div class="card-stats">
+                            <div class="stat border">
+                              <div class="type">
+                                <span className="label">Players: </span>
+                              </div>
+                              <div class="value">{event.players}</div>
+                            </div>
+
+                            <div class="stat border">
+                              <div class="type">
+                                <span className="label">Date: </span>
+                              </div>
+                              <div class="value">{event.date}</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          className="btn btn-outline-danger ml2"
+                          onClick={() => this.deleteEvent(event._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
+<div key={index} className="col-4">
                         <div className="card-test shadow rounded border">
                           <div class="card-image-test"></div>
                           <div class="card-text-test">
@@ -277,3 +328,4 @@ export default class Event extends Component {
     );
   }
 }
+*/

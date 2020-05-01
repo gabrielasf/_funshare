@@ -826,7 +826,7 @@ body {
   -o-background-size: cover;
 }
 /*EVENTS*/
-.card-test {
+.test {
   display: grid;
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
@@ -839,6 +839,11 @@ body {
   transition: 0.5s ease;
   cursor: pointer;
   margin: 30px;
+}
+
+.test:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
 
 .card-image-test {
@@ -863,7 +868,7 @@ body {
   grid-area: text;
   margin: 25px;
 }
-.card-text-test .date {
+.card-text-test .labelLocation {
   color: rgb(255, 7, 110);
   font-size: 13px;
 }
@@ -886,7 +891,6 @@ body {
   border-bottom-right-radius: 15px;
   background: rgb(255, 7, 110);
 }
-
 .card-stats .stat {
   display: flex;
   align-items: center;

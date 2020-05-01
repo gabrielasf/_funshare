@@ -30,7 +30,7 @@ router.post('/login', function(req, res) {
             }
             user.password = hash;
             console.log(("hash",err), hash);
-            //next();
+            
         });
       })
 
@@ -49,3 +49,4 @@ router.post('/login', function(req, res) {
 });
 
 module.exports = router;
+

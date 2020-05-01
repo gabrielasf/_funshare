@@ -14,7 +14,9 @@ export default class extends Component {
     <div className="navbar-nav">
       <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
       <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Your Profile</a>
+      <a className="togcolor nav-item btn text-right font-weight-light" href="/myaccount">My account</a>
+      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Players</a>
+    
     </div>
   </div>
 </nav>
@@ -27,7 +29,7 @@ export default class extends Component {
   
     <div className="row mb-5">
     <div className="col-lg-8 text-white py-4 text-center mx-auto">
-      <h1 className="display-4">We're funshare®</h1>
+      <h1 className="display-4 font-weight-bold diftitle" contentEditable role='textbox' aria-multiline='true'>We're funshare®</h1>
       <p className="lead mb-0">Virtually connecting people to play in the Real World.</p>
     </div>
   </div>
@@ -53,8 +55,6 @@ export default class extends Component {
          
       </li> 
     </ul>
-    
-
 
     <div id="myTabContent" className="tab-content">
      
@@ -71,6 +71,34 @@ export default class extends Component {
       <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
+        <form>
+  <div className="form-group row">
+    <label for="inputEmail3" className="col-sm-2 col-form-label">Name</label>
+    <div className="col-sm-10">
+      <input type="email" className="form-control" id="inputEmail3" placeholder="My name is..."/>
+    </div>
+  </div>
+  <div className="form-group row">
+    <label for="inputPassword3" className="col-sm-2 col-form-label">Email</label>
+    <div className="col-sm-10">
+      <input type="email" className="form-control" id="inputPassword3" placeholder="your@email.com"/>
+    </div>
+  </div>
+  <div className="form-group row">
+    <label for="inputPassword3" className="col-sm-2 col-form-label">Please share your thoughts!</label>
+    <div className="col-sm-10">
+      <textarea type="text" className="form-control" id="inputPassword3" placeholder="You have our attention"></textarea>
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+</form>
        </div>  
 
       <div id="categories" role="tabpanel" aria-labelledby="profile-tab" className="tab-pane fade px-4 py-5">

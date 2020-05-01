@@ -306,6 +306,10 @@
 //     )}
 // }
 
+
+
+
+
 import React, { Component } from "react";
 import MultiSelect from "react-multi-select-component";
 import { withRouter } from 'react-router';
@@ -398,11 +402,38 @@ class AllUsers extends Component {
     
 if(localStorage.getItem('jwtToken')){
     return (
-      <div className="container-fluid allusers">
-        <h1>ALL USERS</h1>
-        <button className="btn btn-primary" onClick={this.logout}>Logout</button> 
-        <div className="input-group mb-3 input-group-prepend">
-          <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">funshare®</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/myaccount">My Account</a>
+        </li>
+        <li class="nav-item">
+        <button className="btn btn-info" onClick={this.logout}>Logout</button> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+      <div className="container allusers">
+      <div className="card allusers border-0 my-5">
+    <div className="card-body m-0 p-7">
+        <h1 className="font-weight-light card-header bg-info">Players gonna play.</h1>
+        <br/>
+        <p class="lead">Use one or more of the search fields below to find your next ally... or oponent!</p>
+        <div className="form-group mx-1">
+          <label className="mr-2" htmlFor="inputGroupSelect01"></label>
           <MultiSelect
             options={[
               { label: "Roll and Move", value: "rollAndMove" },
@@ -420,109 +451,128 @@ if(localStorage.getItem('jwtToken')){
             value={this.state.gameCategory}
             onChange={this.handleSelect}
             labelledBy={"Select"}
-          />
-          <label>City:</label>
-          <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
-          <label>Game's Language:</label>
-          <input onChange={this.handleInputChange} type="text" name="gameLanguage" value={this.state.gameLanguage} />
-          <button onClick={this.searchByMultiple}>Search</button>
-        </div>
+             />
+          </div>
+          
+        <form className="mx-2">
+            <div className="row">
+                <div className="col">
+                   <input onChange={this.handleInputChange} name="cityToFilter" value={this.state.cityToFilter}   type="text" className="form-control" placeholder="City"/>
+                </div>
+               <div className="col">
+                  <input onChange={this.handleInputChange} type="text" name="gameLanguage" value={this.state.gameLanguage}  class="form-control" placeholder="Game's Language"/>
+              </div>
+              <div >
+                <button className="btn btn-outline-info mx-3"  onClick={this.searchByMultiple}>Search</button>
+             </div>
+            </div>
+        </form>
 
         <div className="container">
           <div className="row">
               {this.state.users.map((user, index) => {
                 return (
                   <div key={index} className="col-4">
-                    <div className=" userDisplay shadow rounded border">
+                    <div className="userDisplay cardsss shadow border">
 
-                    {user.avatar !== "" &&
+                    {/* {user.avatar !== "" &&
                       <div>
                         <span className="label">Avatar</span>
                         {user.avatar}
-                      </div>}
+                      </div>} */}
                       
-                      {user.name !== "" &&
-                      <div>
-                        <span className="label">Name: </span>
-                        {user.name}
-                      </div>}
-
                       {user.nickname !== "" &&
                       <div>
-                        <span className="label">Nickname: </span>
-                        {user.nickname}
+                        <h2 className="card-header text-center font-weight-bold bg-info">{user.nickname}</h2>
+                      </div>}
+                      <br/>
+                      {user.name !== "" &&
+                      <div>
+                        <p className="text-center">I'm <h5 className="d-inline font-weight-bold">{user.name}</h5> </p>
                       </div>}
 
                       {user.city !== "" &&
                       <div>
-                        <span className="label">City: </span>
-                        {user.city}
+                        <p className="text-center">from <h5 className="d-inline font-weight-bold">{user.city}</h5> </p>
                       </div>}
 
                       {user.aboutMe !== "" &&
                       <div>
-                        <span className="label">About me: </span>
-                        {user.aboutMe}
+                        <span className="label small">About me: {user.aboutMe} </span>
                       </div>}
 
                       {user.email !== "" &&
                       <div>
-                        <span className="label">Email: </span>
                         {user.email}
                       </div>}
 
                       {user.availability !== "" &&
                       <div>
-                        <span className="label">Availability: </span>
-                        {user.availability}
-                      </div>}
+                        <span className="label small">Availability: {user.availability}</span>
+                        
+                          </div>}
 
+                      <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      My Games</button>
                       <div>
-                        <span>My games: </span>
-                        {user.myGame.map((game, index) => {
+                        <div class="collapse" id="collapseExample">
+                          <div class="card card-body">
+                          {user.myGame.map((game, index) => {
                           return (
                           <div className="mb-4" key={index}>
 
                             {game.myGameName !== "" &&
                             <div>
-                              <span>Game's Name: </span>
-                              {game.myGameName}
+                              <h4 className="btn btn btn-warning">{game.myGameName}</h4>
                             </div>}
 
                             {game.myGameLanguage !== "" &&
                             <div>
-                              <span>Game's Language: </span>
+                              <span className="font-weight-bold">Language: </span>
                               {game.myGameLanguage}
                             </div>}
 
                             {game.myGamePlayersMin !== undefined &&
                             <div>
-                              <span>Minimum players: </span>
+                              <span className="font-weight-bold">Min players: </span>
                               {game.myGamePlayersMin}
                             </div>}
 
                             {game.myGamePlayersMax !== undefined &&
                             <div>
-                              <span>Maximum players: </span>
+                              <span className="font-weight-bold">Max players: </span>
                               {game.myGamePlayersMax}
                             </div>}
 
                             {game.myGameCategory !== "" &&
                             <div>
-                              <span>Game's Category: </span>
+                              <span className="font-weight-bold">Category: </span>
                               {game.myGameCategory}
                             </div>}
                           </div>
                           )
                         })}
+                                        
+                        </div>
+                      </div>
                       </div>
                     </div>
                   </div>
                 );
               })}
-          </div>
+
+             </div>
         </div>
       </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  </div>
+    
 
 )} else {
 

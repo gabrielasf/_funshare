@@ -166,7 +166,7 @@ export default class EditMyGames extends Component {
                 Game's category
               </label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select name="myGameCategory" value={this.state.myGameCategory} onChange={this.handleInputChange} class="custom-select" id="inputGroupSelect01">
               <option selected>Choose...</option>
               <option value="rollAndMove">Roll and Move</option>
               <option value="workerPlacement">Worker Placement</option>

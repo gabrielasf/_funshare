@@ -15,15 +15,21 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "5eab09e39927cb7ce418243f",
+      userId: "",
       users: [],
       allUsers: [],
     };
   }
 
-  editUsers = (userId) => {
+  // editUsers = (userId) => {
+  //   this.setState({
+  //     userId: userId,
+  //   });
+  // };
+
+  getUserId = (_id) => {
     this.setState({
-      userId: userId,
+      userId: _id,
     });
   };
 
@@ -45,25 +51,9 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-             <li>
-              <Link to="/allusers">All Users</Link>
-            </li> 
-          </ul>
-        </nav> */}
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/login" component={LogIn}>
-              <LogIn />
+              <LogIn getUserId={this.getUserId} />
             </Route>
             <Route path="/register" component={Register}>
               <Register />
@@ -85,6 +75,9 @@ export default class App extends Component {
             </Route>
             <Route path="/">
               <Home />
+            </Route>
+            <Route path="/" component={LogIn}>
+              <LogIn getUserId={this.getUserId} />
             </Route>
           </Switch>
         </div>

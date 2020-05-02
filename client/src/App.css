@@ -829,16 +829,16 @@ body {
 .test {
   display: grid;
   grid-template-columns: 300px;
-  grid-template-rows: 210px 210px 80px;
+  grid-template-rows: 210px 200px 80px;
   grid-template-areas: "image" "text" "stats";
-  border-radius: 18px;
+  border-radius: 5px;
   background: white;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   font-family: roboto;
   text-align: center;
   transition: 0.5s ease;
   cursor: pointer;
-  margin: 30px;
+  margin: 15px;
 }
 
 .test:hover {

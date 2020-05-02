@@ -19,11 +19,11 @@ class About extends Component {
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/" >Log In</Link>
-      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/register" >Register</Link>
-      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/myaccount" >My Account</Link>
-      <Link class="togcolor nav-item btn active text-right font-weight-light" to="allusers" >Players</Link>
-      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/event" >Events</Link>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="/" >Log In</Link>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="/register" >Register</Link>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="/myaccount" >My Account</Link>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="allusers" >Players</Link>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="/event" >Events</Link>
     </div>
   </div>
 </nav>

@@ -19,13 +19,6 @@ body{
   margin-bottom: 15px;
 }
 
-  .userDisplay {
- margin-top: 20px;
- margin-bottom: 20px;
- margin-right: 30px;
- padding: 25px;
-}
-
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
@@ -51,7 +44,7 @@ body{
 }
 
 .card-signin .card-img-left {
-  width: 45%;
+  width: 40%;
   /* Link to your background image using in the property below! */
   background: scroll center url('https://img.naturaki.com/84379portada.jpg?auto=compress&h=500&nr=5&usm=50&usmrad=0.5&s=95c0b6f36f1bacfb25a8929ae5c59cfb');
   background-size: cover;
@@ -63,6 +56,7 @@ body{
 
 .form-signin {
   width: 100%;
+  height: auto;
 }
 
 .form-signin .btn {
@@ -395,11 +389,19 @@ body {
 
 .userDisplay {
 
+  background-color: linear-gradient(to right, rgb(13, 13, 14), rgb(21, 25, 27));
   background-color: rgb(14, 22, 22);
-  color: whitesmoke;
-  border-radius: 15px 50px 30px;
+  color: #eaf0ec;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+  padding: 10px;
+ }
 
-}
+
 
 /*ALL USERS CARDS*/
 
@@ -408,111 +410,11 @@ body {
   background-color: #eaf0ec
 }
 
+
+
 .collapse{
 
   color: black;
 
 }
  
-* {
-	box-sizing: border-box;
-}
- 
-.cardusers {
-	background-image: linear-gradient(to right top, #2d0036, #4f015b, #730283, #9a02ac, #C400D7);
-	font-family: 'Roboto', sans-serif;
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
- 
-	min-height: 100vh;
-	margin: 0;
-}
- 
-h3 {
-	margin: 10px 0;
-}
- 
-h6 {
-	margin: 5px 0;
-	text-transform: uppercase;
-}
- 
-p {
-	font-size: 14px;
-	line-height: 21px;
-}
- 
-.card-container {
-	background-color: #231E39;
-	border-radius: 25px;
-	box-shadow: 10px 10px 15px rgba(0,0,0,0.35);
-	color: #B3B8CD;
-	padding: 30px 0 0;
-	position: relative;
-	width: 350px;
-	max-width: 100%;
-	text-align: center;
-	margin: 20px 0;
-	overflow: hidden;
-}
- 
-.card-container .pro {
-	color: #231E39;
-	background-color: #FEBB0B;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	padding: 3px 7px;
-	position: absolute;
-	top: 30px;
-	left: 30px;
-}
- 
-.card-container img {
-	border: 1px solid #C400D7;
-	border-radius: 50%;
-	padding: 7px;
-	height: 150px;
-	width: 150px;
-}
- 
-button.primary {
-	background-color: #C400D7;
-	border: 1px solid #C400D7;
-	border-radius: 3px;
-	color: #fff;
-  font-family: 'Roboto', sans-serif;
-	font-weight: 500;
-	padding: 10px 25px;
-}
- 
-button.primary.ghost {
-	background-color: transparent;
-	color: #C400D7;
-}
- 
-.skills {
-	background-color: #1F1A36;
-	text-align: left;
-	padding: 15px;
-	margin-top: 30px;
-}
- 
-.skills ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
- 
-.skills ul li {
-	border: 1px solid #2D2747;
-	border-radius: 2px;
-	display: inline-block;
-	font-size: 12px;
-	margin: 0 7px 7px 0;
-	padding: 7px;
-}
-

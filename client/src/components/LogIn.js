@@ -28,13 +28,13 @@ import { withRouter } from 'react-router';
     axios.post('api/auth/login', { username, password })
       .then((result) => {
         localStorage.setItem('jwtToken', result.data.token);
-        this.setState({loginState : "correct"})
+        this.setState({message : " "})
         this.props.history.push('/allusers');
       })
         .catch((error) => {
         if(error.response.status === 401) {
-          //this.setState({ message: 'Login failed. Username or password not match' });
-          this.setState({ loginState: "incorrect"});
+          this.setState({ message: 'Username or password incorrect!' });
+          //this.setState({ loginState: "incorrect"});
         }
       });
   }
@@ -57,13 +57,20 @@ import { withRouter } from 'react-router';
               <br/>
               <h3 className="login-heading mb-4">Welcome to funshare®</h3>
               <form onSubmit={this.onSubmit}>
-              {this.state.loginState === "correct" && (
-            <div className="talert alert-success"> You are logged in!</div>
-            )}
+            
+            {message !== "" &&
+            <div className="alert alert-danger alertdismissible" role="alert"> 
+            {message}
+            </div>
+            }
+            
+              {/* {this.state.loginState === "correct" && (
+            <div className="alert alert-success"> You are logged in!</div>
+            )} */}
 
-          {this.state.loginState === "incorrect" && (
+          {/* {this.state.loginState === "incorrect" && (
             <div className="alert alert-danger"> Username or password incorrect!</div>
-          )}
+          )} */}
 
                 <div className="form-label-group">
                   <input 

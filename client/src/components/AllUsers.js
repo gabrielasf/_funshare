@@ -418,6 +418,9 @@ if(localStorage.getItem('jwtToken')){
           <a class="nav-link" href="/myaccount">My Account</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/events">Events</a>
+        </li>
+        <li class="nav-item">
         <button className="btn btn-info" onClick={this.logout}>Logout</button> 
         </li>
       </ul>
@@ -431,9 +434,9 @@ if(localStorage.getItem('jwtToken')){
     <div className="card-body m-0 p-7">
         <h1 className="font-weight-light card-header bg-info">Players gonna play.</h1>
         <br/>
-        <p class="lead">Use one or more of the search fields below to find your next ally... or oponent!</p>
+        <p className="lead">Use one or more of the search fields below to find your next ally... or oponent!</p>
         <div className="form-group mx-1">
-          <label className="mr-2" htmlFor="inputGroupSelect01"></label>
+          <label className="mr-2 inline font-weight-light small" htmlFor="inputGroupSelect01">Games Categories</label>
           <MultiSelect
             options={[
               { label: "Roll and Move", value: "rollAndMove" },
@@ -501,16 +504,16 @@ if(localStorage.getItem('jwtToken')){
                         <span className="label small">About me: {user.aboutMe} </span>
                       </div>}
 
-                      {user.email !== "" &&
-                      <div>
-                        {user.email}
-                      </div>}
-
                       {user.availability !== "" &&
                       <div>
                         <span className="label small">Availability: {user.availability}</span>
                         
                           </div>}
+
+                          {user.email !== "" &&
+                      <div>
+                        <p className="small text-center">{user.email}</p>
+                      </div>}
 
                       <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                       My Games</button>

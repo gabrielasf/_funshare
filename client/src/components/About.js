@@ -16,6 +16,7 @@ export default class extends Component {
       <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
       <a className="togcolor nav-item btn text-right font-weight-light" href="/myaccount">My account</a>
       <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Players</a>
+      <a className="togcolor nav-item btn text-right font-weight-light" href="/events">Events</a>
     
     </div>
   </div>

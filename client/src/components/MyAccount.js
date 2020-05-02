@@ -10,10 +10,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-<<<<<<< HEAD
-
-=======
->>>>>>> 12f9a10e0f89cf81d911daa6ca5fdbf8a2c1ae39
 
 class MyAccount extends Component {
   constructor(props) {
@@ -76,20 +72,6 @@ class MyAccount extends Component {
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
-<<<<<<< HEAD
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <Link class="nav-link" to="/allusers">
-                      Home
-                      <span class="sr-only">(current)</span>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" to="/about">
-                      About
-                    </Link>
-=======
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -107,7 +89,6 @@ class MyAccount extends Component {
                     <Link className="nav-link" to="/event">
                       Events
                     </Link>
->>>>>>> 12f9a10e0f89cf81d911daa6ca5fdbf8a2c1ae39
                   </li>
                   <div className="col p-2">
                     <button className="btn btn-primary" onClick={this.logout}>

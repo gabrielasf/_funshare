@@ -13,12 +13,15 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId:"5eab22a962b8bc0f707c325a",
+      userId:"",
       users: [],
       allUsers: [],
     };
   }
 
+  componentDidMount = () => {
+    console.log("this is user id from app.js", this.state.userId)
+  }
   // editUsers = (userId) => {
   //   this.setState({
   //     userId: userId,
@@ -30,6 +33,10 @@ export default class App extends Component {
       userId: _id,
     });
   };
+
+  componentDidUpdate = () => {
+    console.log("this is user id from app.js", this.state.userId)
+  }
 
   //  componentDidMount() {
   //   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
@@ -66,14 +73,14 @@ export default class App extends Component {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/login" component={LogIn}>
+            {/* <Route path="/login" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
-            </Route>
+            </Route> */}
             <Route path="/register" component={Register}>
-              <Register />
+              <Register userId={this.state.userId} />
             </Route>
             <Route path="/about">
-              <About />
+              <About userId={this.state.userId} />
             </Route>
             <Route path="/allusers">
               <AllUsers userId={this.state.userId} />

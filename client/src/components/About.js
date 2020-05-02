@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-export default class extends Component {
+
+ class About extends Component {
+
     render() {
         return (
             <div>
@@ -12,9 +21,9 @@ export default class extends Component {
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Your Profile</a>
+      <Link className="togcolor nav-item btn active text-right font-weight-light" to="/">Home <span className="sr-only">(current)</span></Link>
+      <Link className="togcolor nav-item btn text-right font-weight-light" to="/register">Register</Link>
+      <Link className="togcolor nav-item btn text-right font-weight-light" to="/allusers">Your Profile</Link>
     </div>
   </div>
 </nav>
@@ -274,3 +283,4 @@ export default class extends Component {
         )
     }
 }
+export default withRouter(About);

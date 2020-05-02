@@ -4,6 +4,13 @@ import styles from "./MyAccount.css";
 import LogIn from "./LogIn";
 import EditProfile from "./EditProfile";
 import EditMyGames from "./EditMyGames";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 class MyAccount extends Component {
   constructor(props) {
@@ -69,15 +76,15 @@ class MyAccount extends Component {
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="/allusers">
+                    <Link class="nav-link" to="/allusers">
                       Home
                       <span class="sr-only">(current)</span>
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/about">
+                    <Link class="nav-link" to="/about">
                       About
-                    </a>
+                    </Link>
                   </li>
                   <div className="col p-2">
                     <button className="btn btn-primary" onClick={this.logout}>

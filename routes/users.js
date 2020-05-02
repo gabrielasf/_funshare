@@ -1,33 +1,18 @@
 var express = require("express");
 var router = express.Router();
-var User = require('../dbmodels/user');
-var passport = require('passport');
-require('../config/passport')(passport);
+var User = require("../dbmodels/user");
+var passport = require("passport");
+require("../config/passport")(passport);
 
-const bodyParser = require("body-parser")  
-router.use(bodyParser.json());        //to support JSON-encoded body
-router.use(bodyParser.urlencoded({    //to support URL-encoded body
-  extended : true
-}));
+const bodyParser = require("body-parser");
+router.use(bodyParser.json()); //to support JSON-encoded body
+router.use(
+  bodyParser.urlencoded({
+    //to support URL-encoded body
+    extended: true,
+  })
+);
 
-
-//get all users
-// router.get("/", passport.authenticate('jwt', { session: false}), function (req, res, next) {
-//   var token = getToken(req.headers);
-//   if (token) {
-
-//GET all users
-// router.get("/", function (req, res, next) {
-//   User.find({}, function (err, result) {
-//      console.log("we connected");
-//       if (err) return next(err);
-//       console.log(err);
-//       res.json(result);
-//   });
-//   //   } else {
-//   //     return res.status(403).send({success: false, msg: 'Unauthorized.'});
-//   // }
-// });
 
 //GET all users
 router.get("/", function (req, res, next) {
@@ -41,7 +26,6 @@ router.get("/", function (req, res, next) {
     }
   });
 });
-
 
 //GET user by id
 router.get("/:id", function (req, res, next) {
@@ -57,8 +41,11 @@ router.get("/:id", function (req, res, next) {
 });
 
 //GET user by category
-router.get('/category/:myGameCategory', function(req, res, next) {
-  User.find({"myGameCategory": req.params.myGameCategory}, function(err, result) {
+router.get("/category/:myGameCategory", function (req, res, next) {
+  User.find({ myGameCategory: req.params.myGameCategory }, function (
+    err,
+    result
+  ) {
     //console.log(result);
     console.log("we connected");
     if (err) {
@@ -70,8 +57,8 @@ router.get('/category/:myGameCategory', function(req, res, next) {
 });
 
 //GET user by city
-router.get('/city/:city', function(req, res, next) {
-  User.find({"city": req.params.city}, function(err, result) {
+router.get("/city/:city", function (req, res, next) {
+  User.find({ city: req.params.city }, function (err, result) {
     //console.log(result);
     console.log("we connected");
     if (err) {
@@ -83,22 +70,22 @@ router.get('/city/:city', function(req, res, next) {
 });
 
 //GET user by multiple filters
-router.post('/filteredSearch', function(req, res){
+router.post("/filteredSearch", function (req, res) {
   //console.log("body request", req.body);
-let obj = {};
-if (req.body.cityToFilter !== "") {
-   obj["city"] = req.body.cityToFilter;
-}
-if (req.body.gameCategory.length !== 0) {
-  obj["myGame.myGameCategory"] = req.body.gameCategory;
-}
-if (req.body.gameLanguage !== "") {
-  obj["myGame.myGameLanguage"] = req.body.gameLanguage;
-}
+  let obj = {};
+  if (req.body.cityToFilter !== "") {
+    obj["city"] = req.body.cityToFilter;
+  }
+  if (req.body.gameCategory.length !== 0) {
+    obj["myGame.myGameCategory"] = req.body.gameCategory;
+  }
+  if (req.body.gameLanguage !== "") {
+    obj["myGame.myGameLanguage"] = req.body.gameLanguage;
+  }
 
-console.log("to jest obiekt", obj);
+  console.log("to jest obiekt", obj);
 
-  User.find(obj, function(err, result) {
+  User.find(obj, function (err, result) {
     console.log(result);
     console.log("we connected");
     if (err) {
@@ -107,7 +94,8 @@ console.log("to jest obiekt", obj);
       res.json(result);
     }
   });
-})
+});
+
 //add new user GEOCODE
 /*router.post("/", function (req, res) {
   const geoCoord = {
@@ -125,37 +113,14 @@ console.log("to jest obiekt", obj);
   });
 }); */
 
-
 //ADD new user
 router.post("/", function (req, res) {
-  
   let user = new User(req.body);
   user.save(function (err, user) {
     res.json(user);
     console.log(err);
   });
-
 });
-
-// router.post('/register', function(req, res) {
-//   if (!req.body.username || !req.body.password) {
-//     res.json({success: false, msg: 'Please pass username and password.'});
-//   } else {
-//     var newUser = new User({
-//       username: req.body.username,
-//       password: req.body.password
-//     });
-//     // save the user
-//     newUser.save(function(err) {
-//       if (err) {
-//         return res.json({success: false, msg: 'Username already exists.'});
-//       }
-//       res.json({success: true, msg: 'Successful created new user.'});
-//     });
-//   }
-// });
-
-
 
 
 //DELETE user by id
@@ -170,11 +135,10 @@ router.delete("/:id", function (req, res) {
   });
 });
 
-
 //UPDATE user by id, ADD new game, DELETE game
 router.patch("/:id", function (req, res) {
   let newObj = {};
-  console.log("body of the request", req.body)
+  console.log("body of the request", req.body);
 
   if (req.body.name !== undefined) {
     newObj["name"] = req.body.name;
@@ -191,7 +155,8 @@ router.patch("/:id", function (req, res) {
   if (req.body.email !== undefined) {
     newObj["email"] = req.body.email;
   }
-  if (req.body.username !== undefined) {  //WILL BE THE NEW EMAIL :)/ SIGN: GABI
+  if (req.body.username !== undefined) {
+    //WILL BE THE NEW EMAIL :)/ SIGN: GABI
     newObj["username"] = req.body.username;
   }
   if (req.body.nickname !== undefined) {
@@ -233,7 +198,7 @@ router.patch("/:id", function (req, res) {
 
   getToken = function (headers) {
     if (headers && headers.authorization) {
-      var parted = headers.authorization.split(' ');
+      var parted = headers.authorization.split(" ");
       if (parted.length === 2) {
         return parted[1];
       } else {
@@ -243,8 +208,6 @@ router.patch("/:id", function (req, res) {
       return null;
     }
   };
-
-
 });
 
 module.exports = router;

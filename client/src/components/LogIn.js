@@ -27,11 +27,14 @@ import { withRouter } from 'react-router';
 
     axios.post('api/auth/login', { username, password })
       .then((result) => {
+        console.log("this is my result", result);
+        this.props.getUserId(result.data._id)
         localStorage.setItem('jwtToken', result.data.token);
         this.setState({message : " "})
         this.props.history.push('/allusers');
       })
-        .catch((error) => {
+      .catch((error) => {
+        console.log(error);
         if(error.response.status === 401) {
           this.setState({ message: 'Username or password incorrect!' });
           //this.setState({ loginState: "incorrect"});
@@ -41,9 +44,10 @@ import { withRouter } from 'react-router';
 
           
     render() {
+      console.log("props", this.props);
       const { username, password, message } = this.state;
       return (
-        <div class="contlogin container-fluid">
+        <div className="contlogin container-fluid">
   <div className="row no-gutter">
     <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
     <div className="col-md-8 col-lg-6">
@@ -81,8 +85,8 @@ import { withRouter } from 'react-router';
                   name="username" 
                   value={username} 
                   onChange={this.onChange}
-                  required autofocus/>
-                  <label for="inputEmail">Email address</label>
+                  required autoFocus/>
+                  <label htmlFor="inputEmail">Email address</label>
                 </div>
 
                 <div className="form-label-group">
@@ -95,7 +99,7 @@ import { withRouter } from 'react-router';
                   value={password} 
                   onChange={this.onChange}
                   required/>
-                  <label for="inputPassword">Password</label>
+                  <label htmlFor="inputPassword">Password</label>
                 </div>
 
                 

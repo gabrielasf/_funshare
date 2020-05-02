@@ -358,6 +358,10 @@ class AllUsers extends Component {
             this.props.history.push('/login');
           }
 
+  myAccount = () => {
+    
+    this.props.history.push('/myAccount');
+  }
   /*searchByCityAndCategory = event => {
     event.preventDefault();
     fetch(`/users/cityAndCategory/${this.state.cityToFilter}/${this.state.gameCategory}`)
@@ -401,6 +405,7 @@ if(localStorage.getItem('jwtToken')){
       <div className="container-fluid allusers">
         <h1>ALL USERS</h1>
         <button className="btn btn-primary" onClick={this.logout}>Logout</button> 
+        <button className="btn btn-primary" onClick={this.myAccount}>My Account</button> 
         <div className="input-group mb-3 input-group-prepend">
           <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
           <MultiSelect
@@ -435,43 +440,43 @@ if(localStorage.getItem('jwtToken')){
                   <div key={index} className="col-4">
                     <div className=" userDisplay shadow rounded border">
 
-                    {user.avatar !== "" &&
+                    {user.avatar !== undefined &&
                       <div>
                         <span className="label">Avatar</span>
                         {user.avatar}
                       </div>}
                       
-                      {user.name !== "" &&
+                      {user.name !== undefined &&
                       <div>
                         <span className="label">Name: </span>
                         {user.name}
                       </div>}
 
-                      {user.nickname !== "" &&
+                      {user.nickname !== undefined &&
                       <div>
                         <span className="label">Nickname: </span>
                         {user.nickname}
                       </div>}
 
-                      {user.city !== "" &&
+                      {user.city !== undefined &&
                       <div>
                         <span className="label">City: </span>
                         {user.city}
                       </div>}
 
-                      {user.aboutMe !== "" &&
+                      {user.aboutMe !== undefined &&
                       <div>
                         <span className="label">About me: </span>
                         {user.aboutMe}
                       </div>}
 
-                      {user.email !== "" &&
+                      {user.username !== undefined &&
                       <div>
                         <span className="label">Email: </span>
-                        {user.email}
+                        {user.username}
                       </div>}
 
-                      {user.availability !== "" &&
+                      {user.availability !== undefined &&
                       <div>
                         <span className="label">Availability: </span>
                         {user.availability}

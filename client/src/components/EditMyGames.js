@@ -88,7 +88,6 @@ export default class EditMyGames extends Component {
       });
   };
 
-
   deleteGame = (index) => {
     // remove game by index from allGames
     this.state.allGames.splice(index, 1);
@@ -119,54 +118,55 @@ export default class EditMyGames extends Component {
       });
   };
 
+  formGroup = (label, name, value) => {
+    return (
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">
+            {label}
+          </span>
+        </div>
+        <input
+          onChange={this.handleInputChange}
+          type="text"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          name={name}
+          value={value}
+        />
+      </div>
+    );
+  };
+
   render() {
     return (
       <div>
-        <h2 className="title">My games</h2>
         <form onSubmit={this.addNewGame}>
-          <div>
-            Game's Name:
-            <input
-              onChange={this.handleInputChange}
-              type="text"
-              name="myGameName"
-              value={this.state.myGameName}
-            />
-          </div>
-          <div>
-            Game's Language:
-            <input
-              onChange={this.handleInputChange}
-              type="text"
-              name="myGameLanguage"
-              value={this.state.myGameLanguage}
-            />
-          </div>
-          <div>
-            Minimum players:
-            <input
-              onChange={this.handleInputChange}
-              type="text"
-              name="myGamePlayersMin"
-              value={this.state.myGamePlayersMin}
-            />
-          </div>
-          <div>
-            Maximum players:
-            <input
-              onChange={this.handleInputChange}
-              type="text"
-              name="myGamePlayersMax"
-              value={this.state.myGamePlayersMax}
-            />
-          </div>
-          <div>
-            Game's Category:
-            <select
-              className="custom-select"
-              onChange={this.handleInputChange}
-              name="myGameCategory"
-            >
+          {this.formGroup("Name", "myGameName", this.state.myGameName)}
+          {this.formGroup(
+            "Language",
+            "myGameLanguage",
+            this.state.myGameLanguage
+          )}
+          {this.formGroup(
+            "Minimum players",
+            "myGamePlayersMin",
+            this.state.myGamePlayersMin
+          )}
+          {this.formGroup(
+            "Maximum players",
+            "myGamePlayersMax",
+            this.state.myGamePlayersMax
+          )}
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">
+                Game's category
+              </label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
               <option selected>Choose...</option>
               <option value="rollAndMove">Roll and Move</option>
               <option value="workerPlacement">Worker Placement</option>
@@ -181,43 +181,31 @@ export default class EditMyGames extends Component {
               <option value="jigsaw">Jigsaw </option>
             </select>
           </div>
-          <input type="submit" value="Add new game" />
+          <input class="btn btn-primary mb-4" type="submit" value="Add new game" />
         </form>
         <div>
           <span>My games: </span>
+          <div className="container">
+          <div className="row"> 
           {this.state.allGames.map((game, index) => {
             return (
-              <div className="mb-4" key={index}>
-                <div>
-                  <span>Game's Name: </span>
-                  {game.myGameName}
-                </div>
-                <div>
-                  <span>Game's Language: </span>
-                  {game.myGameLanguage}
-                </div>
-                <div>
-                  <span>Minimum players: </span>
-                  {game.myGamePlayersMin}
-                </div>
-                <div>
-                  <span>Maximum players: </span>
-                  {game.myGamePlayersMax}
-                </div>
-                <div>
-                  <span>Game's Category: </span>
-                  {game.myGameCategory}
-                </div>
-                <button
-                  onClick={() => {
-                    this.deleteGame(index);
-                  }}
-                >
+              <div key={index} className="col-5">
+                  <div className="userDispaly shadow rounded border">
+                    <div><span className="label">Game's Name: </span>{game.myGameName}</div> 
+                    <div><span className="label">Game's Language: </span>{game.myGameLanguage} </div>
+                    <div><span className="label">Minimum players: </span>{game.myGamePlayersMin} </div>
+                    <div><span className="label">Maximum players: </span>{game.myGamePlayersMax}</div>
+                    <div><span className="label">Game's Category: </span>{game.myGameCategory} </div>
+                  </div>
+                <button className="btn btn-outline-danger mt-3 mb-5" onClick={() =>  this.deleteGame(index)}>
                   Delete
                 </button>
-              </div>
+                </div>
+              
             );
           })}
+           </div>
+            </div>
         </div>
       </div>
     );

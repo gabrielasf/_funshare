@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-export default class extends Component {
+class About extends Component {
     render() {
         return (
             <div>
@@ -12,12 +19,11 @@ export default class extends Component {
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/register">Register</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/myaccount">My account</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Players</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/events">Events</a>
-    
+      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/" >Log In</Link>
+      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/register" >Register</Link>
+      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/myaccount" >My Account</Link>
+      <Link class="togcolor nav-item btn active text-right font-weight-light" to="allusers" >Players</Link>
+      <Link class="togcolor nav-item btn active text-right font-weight-light" to="/event" >Events</Link>
     </div>
   </div>
 </nav>
@@ -303,3 +309,5 @@ export default class extends Component {
         )
     }
 }
+
+export default withRouter(About);

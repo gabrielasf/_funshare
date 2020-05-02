@@ -35,6 +35,7 @@ class MapApp extends Component {
 
   // Adds marker to map and flies to it with an animation
   addAddress = () => {
+    console.log(OCD_API_KEY);
     opencage
       .geocode({ q: this.props.eventLocation, key: OCD_API_KEY })
       .then((data) => {

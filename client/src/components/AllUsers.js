@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MultiSelect from "react-multi-select-component";
 import { withRouter } from 'react-router';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class AllUsers extends Component {
   constructor(props) {
@@ -95,24 +96,24 @@ class AllUsers extends Component {
 if(localStorage.getItem('jwtToken')){
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">funshare®</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div className="container">
+    <a className="navbar-brand" href="#">funshare®</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
+    <div className="collapse navbar-collapse" id="navbarResponsive">
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+        <Link className="nav-link" to="/about" >About</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/myaccount">My Account</a>
+        <li className="nav-item">
+        <Link className="nav-link" to="/myaccount" >My Account</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/events">Events</a>
+        <li className="nav-item">
+        <Link className="nav-link" to="/event" >Events</Link>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
         <button className="btn btn-info" onClick={this.logout}>Logout</button> 
         </li>
       </ul>
@@ -174,14 +175,14 @@ if(localStorage.getItem('jwtToken')){
                       <div>
                         <span className="label">Avatar</span>
                         {user.avatar}
-                      </div>}}
+                      </div>}
                       
-                      {user.name !== undefined &&
+                      {user.nickname !== "" &&
                       <div>
                         <h2 className="card-header text-center bg-info">{user.nickname}</h2>
                       </div>}
 
-                      {user.nickname !== undefined &&
+                      {user.name !== undefined &&
                       <div>
                         <p className="text-center">I'm <h5 className="d-inline ">{user.name}</h5> </p>
                       </div>}
@@ -203,8 +204,8 @@ if(localStorage.getItem('jwtToken')){
                         </div>}
 
                       <div>
-                        <span className="label">Email: </span>
-                        {user.username}
+                        <span className="small text-center">Email: {user.username}</span>
+                        
                       </div>
 
                       {user.availability !== undefined &&
@@ -212,11 +213,11 @@ if(localStorage.getItem('jwtToken')){
                         <p className="small text-center">{user.email}</p>
                       </div>}
 
-                      <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      <button className="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                       My Games</button>
                       <div>
-                        <div class="collapse" id="collapseExample">
-                          <div class="card card-body">
+                        <div className="collapse" id="collapseExample">
+                          <div className="card myGamescolor card-body">
                           {user.myGame.map((game, index) => {
                           return (
                           <div className="mb-4" key={index}>

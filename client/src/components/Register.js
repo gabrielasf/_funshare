@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 class Register extends Component {
@@ -82,12 +88,12 @@ class Register extends Component {
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="togcolor nav-item btn active text-right font-weight-light" href="/">Home <span className="sr-only">(current)</span></a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/myaccount">My account</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/allusers">Players</a>
-      <a className="togcolor nav-item btn text-right font-weight-light" href="/events">Events</a>
-    
-    </div>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/about" >About</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/" >Log In</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/myaccount" >My account</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/allusers" >Players</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/event" >Events</Link>
+     </div>
   </div>
 </nav>
             </div>

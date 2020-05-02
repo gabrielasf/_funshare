@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MapApp from "./MapApp";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class Event extends Component {
   constructor(props) {
@@ -78,13 +79,13 @@ export default class Event extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-          <div class="container">
-            <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+          <div className="container">
+            <a className="navbar-brand" href="#">
               funshare®
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#navbarResponsive"
@@ -92,51 +93,50 @@ export default class Event extends Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/">
-                    Home
-                    <span class="sr-only">(current)</span>
-                  </a>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link class="nav-link" to="/about">About</Link>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/about">
-                    About
-                  </a>
+                <li className="nav-item">
+                <Link class="nav-link" to="/" >Log In</Link>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/myaccount">
-                    My Account
-                  </a>
+                <li className="nav-item">
+                <Link class="nav-link" to="/register">Register</Link>
+                </li>
+                <li className="nav-item">
+                <Link class="nav-link" to="/myaccount" >My Account</Link>
+                </li>
+                <li className="nav-item">
+                <Link class="nav-link" to="/allusers">Players</Link>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
-        <div class="container">
-          <div class="card border-0 shadow my-5">
-            <div class="card-body p-5">
-              <h1 class="font-weight-light">
+        <div className="container">
+          <div className="card border-0 shadow my-5">
+            <div className="card-body p-5">
+              <h1 className="font-weight-light">
                 Create your event and start having fun!
               </h1>
-              <p class="lead">
+              <p className="lead">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
               <MapApp eventLocation={this.state.location} />
-              <div className="form-group">
+              <div classNameName="form-group">
                 <form onSubmit={this.addNewEvent}>
-                  <div class="row">
-                    <div class="col">
+                  <div className="row">
+                    <div className="col">
                       <label>Name of the game</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="gameName"
                         name="gameName"
                         required
@@ -145,26 +145,26 @@ export default class Event extends Component {
 
                       <br />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label>Players:</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="players"
                         name="players"
                         value={this.state.players}
                       />
                       <br />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label>Location:</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="location"
                         name="location"
                         value={this.state.location}
@@ -172,40 +172,40 @@ export default class Event extends Component {
                       <br />
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col">
+                  <div className="row">
+                    <div className="col">
                       <label>Date:</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="date"
                         name="date"
                         value={this.state.date}
                       />
                       <br />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label>Email:</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="email"
                         name="email"
                         value={this.state.email}
                       />
                       <br />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label>Description:</label>
                       <br />
                       <input
                         onChange={this.handleChange}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="description"
                         name="description"
                         value={this.state.description}
@@ -225,9 +225,9 @@ export default class Event extends Component {
                   {this.state.events.map((event, index) => {
                     return (
                       <div key={index}>
-                        <div class="test shadow rounded border">
-                          <div class="card-image-test"></div>
-                          <div class="card-text-test">
+                        <div className="test shadow rounded border">
+                          <div className="card-image-test"></div>
+                          <div className="card-text-test">
                             <span className="label"></span>
                             <h3>{event.gameName}</h3>
                             <span className="label"></span>
@@ -239,7 +239,7 @@ export default class Event extends Component {
 
                             <a href={`mailto:${event.email}`}>
                               <svg
-                                class="bi bi-envelope"
+                                className="bi bi-envelope"
                                 width="2em"
                                 height="2em"
                                 viewBox="0 0 16 16"
@@ -260,19 +260,19 @@ export default class Event extends Component {
                               </svg>
                             </a>
                           </div>
-                          <div class="card-stats">
-                            <div class="stat border">
-                              <div class="type">
+                          <div className="card-stats">
+                            <div className="stat border">
+                              <div className="type">
                                 <span className="label">Players: </span>
                               </div>
-                              <div class="value">{event.players}</div>
+                              <div className="value">{event.players}</div>
                             </div>
 
-                            <div class="stat border">
-                              <div class="type">
+                            <div className="stat border">
+                              <div className="type">
                                 <span className="label">Date: </span>
                               </div>
-                              <div class="value">{event.date}</div>
+                              <div className="value">{event.date}</div>
                             </div>
                           </div>
                         </div>
@@ -296,57 +296,3 @@ export default class Event extends Component {
   }
 }
 
-/*
-<div key={index} className="col-4">
-                        <div className="card-test shadow rounded border">
-                          <div class="card-image-test"></div>
-                          <div class="card-text-test">
-                            <span className="label"></span>
-                            <h3>{event.gameName}</h3>
-                            <div>
-                              <span className="label"></span>
-                              {event.description}
-                            </div>
-
-                            <span className="label"> </span>
-                            <h4>{event.location}</h4>
-
-                            <span className="label"> </span>
-                            {event.email}
-                          </div>
-
-                          <div class="card-stats">
-                            <div class="stat">
-                              <div class="type">
-                                <span className="label">Players: </span>
-                              </div>
-                              <div class="value">{event.players}</div>
-                            </div>
-
-                            <div class="stat border">
-                              <div class="type">
-                                <span className="label">Date: </span>
-                              </div>
-                              <div class="value">{event.date}</div>
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          className="btn btn-outline-danger ml2"
-                          onClick={() => this.deleteEvent(event._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-*/

@@ -18,6 +18,7 @@ router.post('/login', function(req, res) {
     if (!user) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
+      
       //check if password matches
       // bcrypt.genSalt(10, function (err, salt) {
       //   if (err) {
@@ -49,3 +50,4 @@ router.post('/login', function(req, res) {
 });
 
 module.exports = router;
+

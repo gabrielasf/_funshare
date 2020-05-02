@@ -52,14 +52,14 @@ export default class App extends Component {
       <Router>
         <div>
           <Switch>
-            <Route path="/login" component={LogIn}>
+            {/* <Route path="/login" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
-            </Route>
+            </Route> */}
             <Route path="/register" component={Register}>
-              <Register />
+              <Register userId={this.state.userId} />
             </Route>
             <Route path="/about">
-              <About />
+              <About userId={this.state.userId}/>
             </Route>
             <Route path="/allusers">
               <AllUsers userId={this.state.userId} />
@@ -68,14 +68,14 @@ export default class App extends Component {
               <MyAccount userId={this.state.userId} />
             </Route>
             <Route path="/event">
-              <Event />
+              <Event userId={this.state.userId}/>
             </Route>
             <Route path="/map">
-              <MapApp />
+              <MapApp userId={this.state.userId}/>
             </Route>
-            <Route path="/">
+            {/* <Route path="/">
               <Home />
-            </Route>
+            </Route> */}
             <Route path="/" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
             </Route>

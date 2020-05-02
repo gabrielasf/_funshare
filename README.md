@@ -6,7 +6,6 @@
 
 ## API routes plan
 
-## Used technologies
 
 ### Frontend
 
@@ -19,7 +18,13 @@
 - Express - to create server and API routes
 - Node.js - to run the server
 - Mongodb - database
-- Passport - authentication
+
+## Used technologies
+
+For authentication:
+- Passport
+- bcrypt 
+- JWT
 
 ## Dependencies
 

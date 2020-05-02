@@ -13,23 +13,6 @@ router.use(
   })
 );
 
-//get all users
-// router.get("/", passport.authenticate('jwt', { session: false}), function (req, res, next) {
-//   var token = getToken(req.headers);
-//   if (token) {
-
-//GET all users
-// router.get("/", function (req, res, next) {
-//   User.find({}, function (err, result) {
-//      console.log("we connected");
-//       if (err) return next(err);
-//       console.log(err);
-//       res.json(result);
-//   });
-//   //   } else {
-//   //     return res.status(403).send({success: false, msg: 'Unauthorized.'});
-//   // }
-// });
 
 //GET all users
 router.get("/", function (req, res, next) {
@@ -112,6 +95,7 @@ router.post("/filteredSearch", function (req, res) {
     }
   });
 });
+
 //add new user GEOCODE
 /*router.post("/", function (req, res) {
   const geoCoord = {
@@ -137,6 +121,7 @@ router.post("/", function (req, res) {
     console.log(err);
   });
 });
+
 
 //DELETE user by id
 router.delete("/:id", function (req, res) {

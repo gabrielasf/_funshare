@@ -70,7 +70,7 @@ app.use(function (err, req, res, next) {
 
 //PASSPORT
 app.use(express.static("public"));
-app.use(session({ secret: 'anything', resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'anything', resave: true, saveUninitialized: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());

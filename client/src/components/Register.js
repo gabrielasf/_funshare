@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 class Register extends Component {
@@ -11,6 +17,7 @@ class Register extends Component {
       city: "",
       username: "",
       password: "",
+      regState:""
     };
   }
 
@@ -43,11 +50,13 @@ class Register extends Component {
       .then((response) => {
         this.setState({
           users: response,
+          regState: "correct"
         });
         this.props.history.push('/login');
       })
       .catch((error) => {
         console.log(error);
+        this.setState({regState : "incorrect"}) 
       });
   };
 
@@ -69,17 +78,37 @@ class Register extends Component {
 
   render() {
     return (
-  
-      <div className="container" id="register">
+      <div>
+      <div className="container-fluid contreg" id="register">
+      <div>
+            <nav className="navbar togcolor navbar-expand-lg text-right">
+  <a className="navbar-brand text-right font-weight-bold">funshare®</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div className="navbar-nav">
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/about" >About</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/" >Log In</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/myaccount" >My account</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/allusers" >Players</Link>
+    <Link className="togcolor nav-item btn active text-right font-weight-light" to="/event" >Events</Link>
+     </div>
+  </div>
+</nav>
+            </div>
     <div className="row">
       <div className="col-lg-10 col-xl-9 mx-auto">
-        <div className="card card-signin flex-row my-2">
+        <div className="card card-signin flex-row my-0">
           <div className="card-img-left d-none d-md-flex">
              
           </div>
           <div className="card-body">
-            <h5 className="card-title text-center">Register</h5>
+            <h5 className="card-title text-center font-weight-normal">Let the games begin.</h5>
             <form className="form-signin" onSubmit={this.handleSubmit} >
+            {this.state.regState === "incorrect" && (
+            <div className="alert alert-danger alert-dismissible"> Email already registered!</div>
+          )}
               <div className="form-label-group">
                 <input 
                 type="text" 
@@ -149,15 +178,18 @@ class Register extends Component {
               type="submit"
               onClick={() => this.handleClick()}
               >Register</button>
-              <a className="d-block text-center mt-2 small" href="http://localhost:3000/login">Sign In</a>
+              <a className="d-block text-center mt-2" href="http://localhost:3000/login">Sign In</a>
               <hr className="my-4"></hr>
-              <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Sign up with Google</button>
-              <button className="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab mr-2"></i> Sign up with Google</button>
+              <button className="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i className="fab mr-2"></i> Sign up with Facebook</button>
             </form>
           </div>
+          
         </div>
       </div>
     </div>
+  </div>
+  
   </div>
   
         )};

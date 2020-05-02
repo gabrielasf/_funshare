@@ -190,7 +190,7 @@ export default class EditMyGames extends Component {
           {this.state.allGames.map((game, index) => {
             return (
               <div key={index} className="col-5">
-                  <div className="userDispaly shadow rounded border">
+                  <div className="userGameDispaly shadow rounded border">
                     <div><span className="label">Game's Name: </span>{game.myGameName}</div> 
                     <div><span className="label">Game's Language: </span>{game.myGameLanguage} </div>
                     <div><span className="label">Minimum players: </span>{game.myGamePlayersMin} </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MultiSelect from "react-multi-select-component";
 import { withRouter } from 'react-router';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class AllUsers extends Component {
   constructor(props) {
@@ -94,12 +95,41 @@ class AllUsers extends Component {
     
 if(localStorage.getItem('jwtToken')){
     return (
-      <div className="container-fluid allusers">
-        <h1>ALL USERS</h1>
-        <button className="btn btn-primary" onClick={this.logout}>Logout</button> 
-        <button className="btn btn-primary" onClick={this.myAccount}>My Account</button> 
-        <div className="input-group mb-3 input-group-prepend">
-          <label className="input-group-text" htmlFor="inputGroupSelect01">Game category</label>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div className="container">
+    <a className="navbar-brand" href="#">funshare®</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+    <div className="collapse navbar-collapse" id="navbarResponsive">
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+        <Link className="nav-link" to="/about" >About</Link>
+        </li>
+        <li className="nav-item">
+        <Link className="nav-link" to="/myaccount" >My Account</Link>
+        </li>
+        <li className="nav-item">
+        <Link className="nav-link" to="/event" >Events</Link>
+        </li>
+        <li className="nav-item">
+        <button className="btn btn-info" onClick={this.logout}>Logout</button> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+      <div className="container allusers">
+      <div className="card allusers border-0 my-5">
+    <div className="card-body m-0 p-7">
+        <h1 className="font-weight-light card-header bg-info">Players gonna play.</h1>
+        <br/>
+        <p className="lead">Use one or more of the search fields below to find your next ally... or oponent!</p>
+        <div className="form-group mx-1">
+          <label className="mr-2 inline font-weight-light small" htmlFor="inputGroupSelect01">Games Categories</label>
           <MultiSelect
             options={[
               { label: "Roll and Move", value: "rollAndMove" },
@@ -117,20 +147,29 @@ if(localStorage.getItem('jwtToken')){
             value={this.state.gameCategory}
             onChange={this.handleSelect}
             labelledBy={"Select"}
-          />
-          <label>City:</label>
-          <input onChange={this.handleInputChange} type="text" name="cityToFilter" value={this.state.cityToFilter} />
-          <label>Game's Language:</label>
-          <input onChange={this.handleInputChange} type="text" name="gameLanguage" value={this.state.gameLanguage} />
-          <button onClick={this.searchByMultiple}>Search</button>
-        </div>
+             />
+          </div>
+          
+        <form className="mx-2">
+            <div className="row">
+                <div className="col">
+                   <input onChange={this.handleInputChange} name="cityToFilter" value={this.state.cityToFilter}   type="text" className="form-control" placeholder="City"/>
+                </div>
+               <div className="col">
+                  <input onChange={this.handleInputChange} type="text" name="gameLanguage" value={this.state.gameLanguage}  class="form-control" placeholder="Game's Language"/>
+              </div>
+              <div >
+                <button className="btn btn-outline-info mx-3"  onClick={this.searchByMultiple}>Search</button>
+             </div>
+            </div>
+        </form>
 
         <div className="container">
           <div className="row">
               {this.state.users.map((user, index) => {
                 return (
                   <div key={index} className="col-4">
-                    <div className=" userDisplay shadow rounded border">
+                    <div className="userDisplay shadow border">
 
                     {user.avatar !== undefined &&
                       <div>
@@ -138,88 +177,103 @@ if(localStorage.getItem('jwtToken')){
                         {user.avatar}
                       </div>}
                       
-                      {user.name !== undefined &&
+                      {user.nickname !== "" &&
                       <div>
-                        <span className="label">Name: </span>
-                        {user.name}
+                        <h2 className="card-header text-center bg-info">{user.nickname}</h2>
                       </div>}
 
-                      {user.nickname !== undefined &&
+                      {user.name !== undefined &&
                       <div>
-                        <span className="label">Nickname: </span>
-                        {user.nickname}
+                        <p className="text-center">I'm <h5 className="d-inline ">{user.name}</h5> </p>
                       </div>}
 
                       {user.city !== undefined &&
                       <div>
-                        <span className="label">City: </span>
-                        {user.city}
+                        <p className="text-center">from <h5 className="d-inline ">{user.city}</h5> </p>
                       </div>}
 
                       {user.aboutMe !== undefined &&
                       <div>
-                        <span className="label">About me: </span>
-                        {user.aboutMe}
-                      </div>}
-
-                      {user.username !== undefined &&
-                      <div>
-                        <span className="label">Email: </span>
-                        {user.username}
+                        <span className="label small">About me: {user.aboutMe} </span>
                       </div>}
 
                       {user.availability !== undefined &&
                       <div>
-                        <span className="label">Availability: </span>
-                        {user.availability}
-                      </div>}
+                        <span className="label small">Availability: {user.availability}</span>
+                        
+                        </div>}
 
                       <div>
-                        <span>My games: </span>
-                        {user.myGame.map((game, index) => {
+                        <span className="small text-center">Email: {user.username}</span>
+                        
+                      </div>
+
+                      {user.availability !== undefined &&
+                      <div>
+                        <p className="small text-center">{user.email}</p>
+                      </div>}
+
+                      <button className="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      My Games</button>
+                      <div>
+                        <div className="collapse" id="collapseExample">
+                          <div className="card myGamescolor card-body">
+                          {user.myGame.map((game, index) => {
                           return (
                           <div className="mb-4" key={index}>
 
                             {game.myGameName !== "" &&
                             <div>
-                              <span>Game's Name: </span>
-                              {game.myGameName}
+                              <h4 className="btn btn btn-warning">{game.myGameName}</h4>
                             </div>}
 
                             {game.myGameLanguage !== "" &&
                             <div>
-                              <span>Game's Language: </span>
+                              <span className="font-weight-bold">Language: </span>
                               {game.myGameLanguage}
                             </div>}
 
                             {game.myGamePlayersMin !== undefined &&
                             <div>
-                              <span>Minimum players: </span>
+                              <span className="font-weight-bold">Min players: </span>
                               {game.myGamePlayersMin}
                             </div>}
 
                             {game.myGamePlayersMax !== undefined &&
                             <div>
-                              <span>Maximum players: </span>
+                              <span className="font-weight-bold">Max players: </span>
                               {game.myGamePlayersMax}
                             </div>}
 
                             {game.myGameCategory !== "" &&
                             <div>
-                              <span>Game's Category: </span>
+                              <span className="font-weight-bold">Category: </span>
                               {game.myGameCategory}
                             </div>}
                           </div>
                           )
                         })}
+                                        
+                        </div>
+                      </div>
                       </div>
                     </div>
                   </div>
                 );
               })}
-          </div>
+
+             </div>
         </div>
       </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  </div>
+    
 
 )} else {
 

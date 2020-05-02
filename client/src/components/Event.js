@@ -120,12 +120,11 @@ export default class Event extends Component {
           <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
               <h1 class="font-weight-light">
-                Fixed Full Page Background Image
+                Create your event and start having fun!
               </h1>
               <p class="lead">
-                In this snippet, the background image is fixed to the body
-                element. Content on the page will scroll, but the image will
-                remain in a fixed position!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
               <MapApp eventLocation={this.state.location} />
               <div className="form-group">

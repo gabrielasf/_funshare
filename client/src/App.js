@@ -1,51 +1,55 @@
-import React, { Component }  from 'react';
-import './App.css';
-import AllUsers from './components/AllUsers.js';
-import Home from './components/Home.js';
-import Register from './components/Register.js';
-import About from './components/About.js';
-import MyAccount from './components/MyAccount.js';
-import LogIn from './components/LogIn';
+import React, { Component } from "react";
+import "./App.css";
+import AllUsers from "./components/AllUsers.js";
+import Home from "./components/Home.js";
+import Register from "./components/Register.js";
+import About from "./components/About.js";
+import MyAccount from "./components/MyAccount.js";
+import LogIn from "./components/LogIn";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "5ea9e5d27ed0f732d907eda9",
+      userId:"5eab22a962b8bc0f707c325a",
       users: [],
-      allUsers: []
+      allUsers: [],
     };
   }
 
-  editUsers = (userId) => {
+  // editUsers = (userId) => {
+  //   this.setState({
+  //     userId: userId,
+  //   });
+  // };
+
+  getUserId = (_id) => {
     this.setState({
-      userId: userId,
+      userId: _id,
     });
   };
 
-//  componentDidMount() {
-//   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-//   axios.get('/users')
-//     .then(res => {
-//       console.log(this.state.users);
-//       this.setState({ users: res.data });
-//     })
-//     .catch((error) => {
-//       if(error.response === 401) {
-//         this.props.history.push("/login");
-//       }
-//     });
-// }
+  //  componentDidMount() {
+  //   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
+  //   axios.get('/users')
+  //     .then(res => {
+  //       console.log(this.state.users);
+  //       this.setState({ users: res.data });
+  //     })
+  //     .catch((error) => {
+  //       if(error.response === 401) {
+  //         this.props.history.push("/login");
+  //       }
+  //     });
+  // }
 
   render() {
-  return (
-    <Router>
-      <div>
-        {/* <nav>
+    return (
+      <Router>
+        <div>
+          {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -61,27 +65,28 @@ export default class App extends Component {
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>    
-       <Route path="/login" component={LogIn}>
-            <LogIn />
-          </Route>
-          <Route path="/register" component={Register}>
-            <Register />
-          </Route>
+          <Switch>
+            <Route path="/login" component={LogIn}>
+              <LogIn getUserId={this.getUserId} />
+            </Route>
+            <Route path="/register" component={Register}>
+              <Register />
+            </Route>
             <Route path="/about">
               <About />
             </Route>
             <Route path="/allusers">
-              <AllUsers userId={this.state.userId}/>
+              <AllUsers userId={this.state.userId} />
             </Route>
             <Route path="/myaccount">
               <MyAccount userId={this.state.userId} />
             </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  )};
+            <Route path="/" component={LogIn}>
+              <LogIn getUserId={this.getUserId} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }

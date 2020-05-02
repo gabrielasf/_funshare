@@ -6,7 +6,7 @@ export default class EditProfile extends Component {
     this.state = {
       name: "",
       nickname: "",
-      email: "",
+      username: "",
       password: "",
       avatar: "",
       language: "",
@@ -32,7 +32,7 @@ export default class EditProfile extends Component {
         this.setState({
           name: response.name,
           nickname: response.nickname,
-          email: response.email,
+          username: response.username,
           password: response.password,
           avatar: response.avatar,
           language: response.language,
@@ -67,7 +67,7 @@ export default class EditProfile extends Component {
       body: JSON.stringify({
         name: this.state.name,
         nickname: this.state.nickname,
-        email: this.state.email,
+        username: this.state.username,
         password: this.state.password,
         avatar: this.state.avatar,
         address: this.state.address,
@@ -125,28 +125,9 @@ export default class EditProfile extends Component {
   render() {
     return (
       <div>
-        <h2 className="title">Profile</h2>
         <form onSubmit={this.saveChanges} className="form-horizontal">
           <fieldset className="fieldset">
-            <h3 className="fieldset-title">Personal Info</h3>
-            <div className="form-group avatar">
-              <figure className="figure col-md-2 col-sm-3 col-xs-12">
-                <img
-                  className="img-rounded img-responsive"
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  alt=""
-                />
-              </figure>
-              <div className="form-inline col-md-10 col-sm-9 col-xs-12">
-                <input type="file" className="file-uploader pull-left" />
-                <button
-                  type="submit"
-                  className="btn btn-sm btn-default-alt pull-left"
-                >
-                  Update Image
-                </button>
-              </div>
-            </div>
+            
             {this.formGroup("Name", "name", this.state.name)}
             {this.formGroup("Nickname", "nickname", this.state.nickname)}
             {this.formGroup("City", "city", this.state.city)}
@@ -170,8 +151,7 @@ export default class EditProfile extends Component {
           </fieldset>
 
           <fieldset className="fieldset">
-            <h3 className="fieldset-title">Login details</h3>
-            {this.formGroup("Email", "email", this.state.email)}
+            {this.formGroup("Email", "username", this.state.username)}
             {this.formGroup("Password", "password", this.state.password)}
           </fieldset>
           <hr />

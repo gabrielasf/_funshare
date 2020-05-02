@@ -10,7 +10,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 12f9a10e0f89cf81d911daa6ca5fdbf8a2c1ae39
 
 class MyAccount extends Component {
   constructor(props) {
@@ -57,13 +60,13 @@ class MyAccount extends Component {
     if (localStorage.getItem("jwtToken")) {
       return (
         <div>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-            <div class="container">
-              <a class="navbar-brand" href="#">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+            <div className="container">
+              <a className="navbar-brand" href="#">
                 funshare®
               </a>
               <button
-                class="navbar-toggler"
+                className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
                 data-target="#navbarResponsive"
@@ -71,8 +74,9 @@ class MyAccount extends Component {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
+<<<<<<< HEAD
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
@@ -85,6 +89,25 @@ class MyAccount extends Component {
                     <Link class="nav-link" to="/about">
                       About
                     </Link>
+=======
+              <div className="collapse navbar-collapse" id="navbarResponsive">
+                <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/about">
+                      About
+                    </Link>
+                  </li>
+                  <li className="nav-item active">
+                    <Link className="nav-link" to="/allusers">
+                      Players
+                      <span className="sr-only">(current)</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/event">
+                      Events
+                    </Link>
+>>>>>>> 12f9a10e0f89cf81d911daa6ca5fdbf8a2c1ae39
                   </li>
                   <div className="col p-2">
                     <button className="btn btn-primary" onClick={this.logout}>

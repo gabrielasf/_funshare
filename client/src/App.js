@@ -5,6 +5,8 @@ import Home from "./components/Home.js";
 import Register from "./components/Register.js";
 import About from "./components/About.js";
 import MyAccount from "./components/MyAccount.js";
+import Event from "./components/Event.js";
+import MapApp from "./components/MapApp.js";
 import LogIn from "./components/LogIn";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -13,7 +15,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId:"",
+      userId: "",
       users: [],
       allUsers: [],
     };
@@ -56,22 +58,6 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-             <li>
-              <Link to="/allusers">All Users</Link>
-            </li> 
-          </ul>
-        </nav> */}
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             {/* <Route path="/login" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
@@ -80,7 +66,7 @@ export default class App extends Component {
               <Register userId={this.state.userId} />
             </Route>
             <Route path="/about">
-              <About userId={this.state.userId} />
+              <About userId={this.state.userId}/>
             </Route>
             <Route path="/allusers">
               <AllUsers userId={this.state.userId} />
@@ -88,6 +74,15 @@ export default class App extends Component {
             <Route path="/myaccount">
               <MyAccount userId={this.state.userId} />
             </Route>
+            <Route path="/event">
+              <Event userId={this.state.userId}/>
+            </Route>
+            <Route path="/map">
+              <MapApp userId={this.state.userId}/>
+            </Route>
+            {/* <Route path="/">
+              <Home />
+            </Route> */}
             <Route path="/" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
             </Route>

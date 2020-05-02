@@ -14,7 +14,7 @@ class Register extends Component {
     };
   }
 
-  componentDiMount() {
+  componentDidMount() {
     this.postUsers();
   }
 

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Icon } from "leaflet";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+require("dotenv").config();
 
 const opencage = require("opencage-api-client");
-//const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
-//const OCD_API_KEY = `${process.env.REACT_APP_OCD_API_KEY}`;
-
-const OCD_API_KEY = "c3f27287eeef4dfc803b21c0d95eb9df";
+const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
+console.log("api key", OCD_API_KEY)
 
 class MapApp extends Component {
   constructor(props) {

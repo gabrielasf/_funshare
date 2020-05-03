@@ -18,6 +18,7 @@ export default class EditMyGames extends Component {
   }
 
   getUserById = (id) => {
+    console.log("this is user id", this.props.userId)
     fetch(`/users/${this.props.userId}`)
       .then((res) => res.json())
       .then((response) => {

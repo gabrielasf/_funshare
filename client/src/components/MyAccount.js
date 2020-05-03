@@ -232,17 +232,14 @@ class MyAccount extends Component {
       );
     } else {
       return (
-        <div id="gameover">
-          <img
-            src="https://miro.medium.com/max/1200/1*sgx0PeiAxkB5qUnbI79S-g.png"
-            className="mx-auto d-block"
-          />
-          <h1 className="auth text-center">
-            USERS ONLY - PLEASE{" "}
-            <a href="/login" className="btn btn-danger btn-lg">
-              LOG IN
-            </a>{" "}
-          </h1>
+        <div id="gameover" className="container-fluid">
+            <img src="https://miro.medium.com/max/1200/1*sgx0PeiAxkB5qUnbI79S-g.png" className="mx-auto d-block"/>
+            <h1 className="auth text-center">Error 401 - Unauthorized</h1>
+            <br/>
+            <a href="/login" className="btn btn-light btn-lg d-block mt-10">PRESS HERE TO START A NEW GAME</a>
+            <br/>
+            <br/>
+            <br/>
         </div>
       );
     }
@@ -250,3 +247,4 @@ class MyAccount extends Component {
 }
 
 export default withRouter(MyAccount);
+

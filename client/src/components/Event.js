@@ -97,20 +97,30 @@ export default class Event extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link class="nav-link" to="/about">About</Link>
+                <li className="nav-item">
+                  <Link class="nav-link" to="/about">
+                    About
+                  </Link>
                 </li>
                 <li className="nav-item">
-                <Link class="nav-link" to="/" >Log In</Link>
+                  <Link class="nav-link" to="/">
+                    Log In
+                  </Link>
                 </li>
                 <li className="nav-item">
-                <Link class="nav-link" to="/register">Register</Link>
+                  <Link class="nav-link" to="/register">
+                    Register
+                  </Link>
                 </li>
                 <li className="nav-item">
-                <Link class="nav-link" to="/myaccount" >My Account</Link>
+                  <Link class="nav-link" to="/myaccount">
+                    My Account
+                  </Link>
                 </li>
                 <li className="nav-item">
-                <Link class="nav-link" to="/allusers">Players</Link>
+                  <Link class="nav-link" to="/allusers">
+                    Players
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -126,7 +136,10 @@ export default class Event extends Component {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <MapApp eventLocation={this.state.location} />
+              <MapApp
+                eventLocation={this.state.location}
+                events={this.state.events}
+              />
               <div classNameName="form-group">
                 <form onSubmit={this.addNewEvent}>
                   <div className="row">
@@ -295,4 +308,3 @@ export default class Event extends Component {
     );
   }
 }
-

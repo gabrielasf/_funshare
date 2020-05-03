@@ -189,7 +189,7 @@ class About extends Component {
                 <form>
                   <div className="form-group row">
                     <label
-                      for="inputEmail3"
+                      htmlFor="inputEmail3"
                       className="col-sm-2 col-form-label"
                     >
                       Name

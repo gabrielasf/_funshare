@@ -21,11 +21,9 @@ export default class App extends Component {
     };
   }
 
-  // editUsers = (userId) => {
-  //   this.setState({
-  //     userId: userId,
-  //   });
-  // };
+  componentDidMount = () => {
+    console.log("this is user id from app.js", this.state.userId);
+  };
 
   getUserId = (_id) => {
     this.setState({
@@ -33,33 +31,20 @@ export default class App extends Component {
     });
   };
 
-  //  componentDidMount() {
-  //   axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-  //   axios.get('/users')
-  //     .then(res => {
-  //       console.log(this.state.users);
-  //       this.setState({ users: res.data });
-  //     })
-  //     .catch((error) => {
-  //       if(error.response === 401) {
-  //         this.props.history.push("/login");
-  //       }
-  //     });
-  // }
+  componentDidUpdate = () => {
+    console.log("this is user id from app.js", this.state.userId);
+  };
 
   render() {
     return (
       <Router>
         <div>
           <Switch>
-            {/* <Route path="/login" component={LogIn}>
-              <LogIn getUserId={this.getUserId} />
-            </Route> */}
             <Route path="/register" component={Register}>
               <Register userId={this.state.userId} />
             </Route>
             <Route path="/about">
-              <About userId={this.state.userId}/>
+              <About userId={this.state.userId} />
             </Route>
             <Route path="/allusers">
               <AllUsers userId={this.state.userId} />
@@ -68,14 +53,11 @@ export default class App extends Component {
               <MyAccount userId={this.state.userId} />
             </Route>
             <Route path="/event">
-              <Event userId={this.state.userId}/>
+              <Event userId={this.state.userId} />
             </Route>
             <Route path="/map">
-              <MapApp userId={this.state.userId}/>
+              <MapApp userId={this.state.userId} />
             </Route>
-            {/* <Route path="/">
-              <Home />
-            </Route> */}
             <Route path="/" component={LogIn}>
               <LogIn getUserId={this.getUserId} />
             </Route>

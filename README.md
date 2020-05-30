@@ -1,48 +1,70 @@
 # funshare®
+<<<<<<< HEAD
 funshare® is an app to virtually connect board game lovers and allow them to meet and play in the real world! 
+=======
+funshare® is an app to virtually connect boardgame lovers and allow them to meet and play in the real world! :game_die: :mahjong: :black_joker: 
+>>>>>>> readme updated with pics and some other minor updates
 
-## Getting started
+:pushpin: ## Getting started
 
 - Install mongoDB 
 - In app.js there is connection set up using mongoose and funshare collection is created
 
-## Dependencies
+:pushpin: ## Dependencies
 
 1. Run `yarn install` in project directory to install Express.`yarn start` to run servers on port 5001
 2. `cd client` and `yarn install` to install React. `yarn start` to run servers on port 3000.
 
-## API 
+:pushpin: ## API 
 Create a `.env` file
 - visit https://opencagedata.com/, register and create your own API key
 - create a variable REACT_APP_OCD_API_KEY=*** and replace the * with your own key
 
 
-## User Flow Diagram
+:pushpin: ## User Flow Diagram :ocean:
 
-![User Flow Diagram](userFlowFunshare.png)
+![User Flow Diagram](images/userFlowFunshare.png)
 
-## Database schema
+:pushpin: ## User Flow in Pics :twisted_rightwards_arrows:
 
-![User Schema](UserSchema.png)
+![funshare ](images/funshare_home1.png)
 
-![Event Schema](EventSchema.png)
+![funshare ](images/funshare_about.png)
 
-## API routes plan
+![funshare ](images/funshare_register.png)
 
-![User Get](usersGet.png)
-![User Id Get](usersIdGet.png)
-![User Category Get](usersCategoryGet.png)
-![User City Get](usersCityGet.png)
-![User Filter Get](usersFilterGet.png)
-![User Auth Post](usersAuthPost.png)
-![User Add Post](usersAddPost.png)
-![User Id Patch](usersIdPatch.png)
-![User Id Delete](usersIdDelete.png)
-![Events](events.png)
+![funshare ](images/funshare_dashboard.png)
+
+![funshare ](images/funshare_profile.png)
+
+![funshare ](images/funshare_mygames.png)
+
+![funshare ](images/funshare_createevent.png)
 
 
 
-## Used technologies
+:pushpin: ## Database schema
+
+![User Schema](images/UserSchema.png)
+
+![Event Schema](images/EventSchema.png)
+
+:pushpin: ## API routes plan
+
+![User Get](images/usersGet.png)
+![User Id Get](images/usersIdGet.png)
+![User Category Get](images/usersCategoryGet.png)
+![User City Get](images/usersCityGet.png)
+![User Filter Get](images/usersFilterGet.png)
+![User Auth Post](images/usersAuthPost.png)
+![User Add Post](images/usersAddPost.png)
+![User Id Patch](images/usersIdPatch.png)
+![User Id Delete](images/usersIdDelete.png)
+![Events](images/events.png)
+
+
+
+:pushpin: ## Used technologies
 
 For authentication:
 - Passport
@@ -67,7 +89,7 @@ For authentication:
 
 - mongoDB 
 
-## Future features
+## Future features :fast_forward:
 
 - Deploy on Heroku
 - User communication, direct messages or chat
@@ -81,9 +103,9 @@ For authentication:
 
 ## The team
 
-- Donatella Carta
-- Gabriela Scorza
-- Paulina Czybir
+- Donatella Carta :ant:
+- Gabriela Scorza :ant:
+- Paulina Czybir :ant:
 
 ## Credit
 

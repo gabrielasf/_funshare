@@ -35,7 +35,7 @@ class LogIn extends Component {
       .catch((error) => {
         console.log(error);
         if (error.response.status === 401) {
-          this.setState({ message: "Username or password incorrect!" });
+          this.setState({ message: "Log in failed. Please try again or sign up!" });
         }
       });
   };
@@ -60,12 +60,16 @@ class LogIn extends Component {
                     <form onSubmit={this.onSubmit}>
                       {message !== "" && (
                         <div
-                          className="alert alert-danger alertdismissible"
+                          className="alert alert-danger alert-dismissible fade show"
                           role="alert"
-                        >
+                          >
                           {message}
-                        </div>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                          </button>
+                          </div>
                       )}
+
 
                       <div className="form-label-group">
                         <input

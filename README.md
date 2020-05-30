@@ -1,5 +1,5 @@
 # funshare®
-funshare® is an app to virtually connect boardgame lovers and allow them to meet and play in the real world! 
+funshare® is an app to virtually connect board game lovers and allow them to meet and play in the real world! 
 
 ## Getting started
 

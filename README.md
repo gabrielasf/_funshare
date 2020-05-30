@@ -22,7 +22,7 @@ Create a `.env` file
 
 ![User Flow Diagram](images/userFlowFunshare.png)
 
-:pushpin: ## User Flow in Pics :twisted_rightwards_arrows:
+## :pushpin: User Flow in Pics :twisted_rightwards_arrows:
 
 ![funshare ](images/funshare_home1.png)
 

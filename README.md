@@ -12,7 +12,7 @@ funshare® is an app to virtually connect board game lovers and allow them to me
 1. Run `yarn install` in project directory to install Express.`yarn start` to run servers on port 5001
 2. `cd client` and `yarn install` to install React. `yarn start` to run servers on port 3000.
 
-:pushpin: ## API 
+## :pushpin: API 
 Create a `.env` file
 - visit https://opencagedata.com/, register and create your own API key
 - create a variable REACT_APP_OCD_API_KEY=*** and replace the * with your own key

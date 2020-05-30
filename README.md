@@ -2,12 +2,12 @@
 
 funshare® is an app to virtually connect board game lovers and allow them to meet and play in the real world! :game_die: :mahjong: :black_joker: 
 
-:pushpin: ## Getting started
+## :pushpin: Getting started
 
 - Install mongoDB 
 - In app.js there is connection set up using mongoose and funshare collection is created
 
-:pushpin: ## Dependencies
+## :pushpin: Dependencies
 
 1. Run `yarn install` in project directory to install Express.`yarn start` to run servers on port 5001
 2. `cd client` and `yarn install` to install React. `yarn start` to run servers on port 3000.
@@ -18,7 +18,7 @@ Create a `.env` file
 - create a variable REACT_APP_OCD_API_KEY=*** and replace the * with your own key
 
 
-:pushpin: ## User Flow Diagram :ocean:
+## :pushpin: User Flow Diagram :ocean:
 
 ![User Flow Diagram](images/userFlowFunshare.png)
 
@@ -40,13 +40,13 @@ Create a `.env` file
 
 
 
-:pushpin: ## Database schema
+## :pushpin: Database schema
 
 ![User Schema](images/UserSchema.png)
 
 ![Event Schema](images/EventSchema.png)
 
-:pushpin: ## API routes plan
+## :pushpin: API routes plan
 
 ![User Get](images/usersGet.png)
 ![User Id Get](images/usersIdGet.png)
@@ -61,7 +61,7 @@ Create a `.env` file
 
 
 
-:pushpin: ## Used technologies
+## :pushpin: Used technologies
 
 For authentication:
 - Passport
